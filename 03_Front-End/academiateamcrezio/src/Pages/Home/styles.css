@@ -372,12 +372,10 @@
 .parceiros {
     display: flex;
     justify-content: center;
-    background-color: #4B4C4D;
     width: auto;
 }
 
 .parceiros img {
-    margin-bottom: 50px;
     width: 100%;
     height: 100%;
 }

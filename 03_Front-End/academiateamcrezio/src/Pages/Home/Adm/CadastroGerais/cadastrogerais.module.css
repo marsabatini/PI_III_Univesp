@@ -45,6 +45,17 @@
 
 }
 
+.refresh i {
+    display: flex;
+    color: #3D3E40;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+.refresh i:hover{
+    background-color: #ccc;
+}
+
 .input_aluno {
 
     display: flex;
@@ -73,30 +84,7 @@
     background-color: #686869;
 }
 
-.delete {
 
-    background-color: #700809;
-    color: #fff;
-    border-radius: 10px;
-    font-size: 18px;
-    width: 100px;
-    text-transform: uppercase;
-    transition: all .3s;
-    cursor: pointer;
-    border: none;
-
-}
-
-.delete:hover {
-
-    background-color: #A21500;
-    transform: scale(.95);
-}
-
-.delete:hover:active {
-
-    transform: scale(.9);
-}
 
 .input_aluno input[type="text"] {
     border: none;
@@ -406,6 +394,14 @@
     cursor: pointer;
     transition: all .3s;
 
+}
+
+.tipo_cadastro_options button[data-action="excluir"] {
+    background-color: #700809;
+}
+
+.tipo_cadastro_options button[data-action="excluir"]:hover {
+    background-color: #A21500;
 }
 
 .tipo_cadastro_options button:hover {

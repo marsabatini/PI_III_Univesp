@@ -1,6 +1,8 @@
 import Header from "../../Components/Header/index.js";
 import Footer from "../../Components/Footer/index.js";
 
+import { useEffect } from "react";
+import { Log_in_out_header } from "../../Components/Header/index"
 
 import JiuJitsu from "../../../Assets/jiuJitsu.png";
 import Boxe from "../../../Assets/Boxe.png";
@@ -13,8 +15,11 @@ import style_modalidades from "./modalidades.css"
 
 
 
-
 export default function Modalidades () {
+    
+    useEffect(() => {
+            Log_in_out_header();
+    },[])
 
     return(
         <>
@@ -26,7 +31,7 @@ export default function Modalidades () {
 
                     <Header/>
                         <main className={style_modalidades.principal}>
-<section className="alinhamento_m">
+                            <section className="alinhamento_m">
 
 
                             <div class="jiu_jitsu">

@@ -24,6 +24,7 @@ body {
   flex-direction: column;
   border-radius: 5px;
   height: 476px;
+  padding: 2rem;
 }
 .box-input .box-u {
   position: relative;

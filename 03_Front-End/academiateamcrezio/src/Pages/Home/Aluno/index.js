@@ -1,20 +1,23 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import api from "../../../Services/Api";
+import { Log_in_out_header } from "../../Components/Header/index"
 
 import style_aluno from "./aluno.modules.css";
 import foto_perfil from "../../../Assets/fotoperfil.jpeg";
 
-import Header from "../../Components/Header_Logado";
+import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 
-export default function Aluno() {
 
+export default function Aluno() {
+    
     const [userData, setUserData] = useState({});
     const [email, setEmail] = useState({});
     const [senha, setSenha] = useState({});
     const [aulasMarcadas, setAulasMarcadas] = useState({})
-
+    
+    
 
     async function carregarAulasAluno() {
         const idAluno = JSON.parse(localStorage.getItem('id'));
@@ -52,7 +55,7 @@ export default function Aluno() {
 
         carregarDados();
         carregarAulasAluno();
-
+        Log_in_out_header();
 
     }, []);
 

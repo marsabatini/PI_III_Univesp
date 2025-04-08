@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { Log_in_out_header } from "../Components/Header";
 
 import foto_inicial from "../../Assets/fotoInicial.png";
 import foto_inicial_responsiva from "../../Assets/fotoInicial_Responsiva.png";
@@ -60,7 +60,9 @@ import Header from "../Components/Header";
 
 export default function Inicio() {
 
-
+    useEffect(() => {
+        Log_in_out_header();
+    })
 
     return (
 

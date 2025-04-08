@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import { Log_in_out_header } from "../../Components/Header/index"
 import './styles.css';
 
 import Header from "../../Components/Header";
@@ -18,9 +19,11 @@ export default function Login() {
     const [id, setId] = useState('');
     const [nome, setNome] = useState('');
     const [role, setRole] = useState('');
+    
 
     const navigate = useNavigate();
 
+    
 
     async function Login(e) {
         e.preventDefault();
@@ -34,31 +37,40 @@ export default function Login() {
             const response = await api.post('/api/login', data);
             const userData = response.data;
 
-            // localStorage.setItem('email', email);
+            localStorage.setItem('email', email);
             localStorage.setItem('id', response.data.id);
-            // localStorage.setItem('nome', response.data.nome);
-            // localStorage.setItem('acessToken', response.data.token);
-            // localStorage.setItem('refreshToken', response.data.refreshToken);
-            // localStorage.setItem('role', response.data.role);
+            localStorage.setItem('nome', response.data.nome);
+            //localStorage.setItem('refreshToken', response.data.refreshToken);
+            localStorage.setItem('role', response.data.role);
             
-            // Precisaremos fazer a lógica para, caso seja funcionário ou aluno
             if (response.data.role === "ALUNO") {
-                navigate('/aluno')
                 localStorage.setItem('userData', JSON.stringify(userData));
+                localStorage.setItem('usuarioLogado','true');
+                navigate('/aluno')
+
             } else if (response.data.role === "ADMIN") {
-                navigate('/adm/agenda')
+                localStorage.setItem('acessToken', response.data.token);
+                navigate('/adm/cadastro_gerais')
+
             } else if (response.data.role === "PROFESSOR" || response.data.role === "TREINADOR") {
-                navigate('/funcionario')
+                localStorage.setItem('acessToken', response.data.token);
+                navigate('/adm/cadastro_gerais')
+
             } else {
                 alert("Usuário não encontrado!!!!!!!");
             }
+            
         } catch (err) {
             // mensagemErro('Usuário e/ou senha inválido(s).')
             alert("Usuário desconhecido")
         }
+
     };
-
-
+    
+    useEffect(() => {
+        Log_in_out_header();
+    },[])
+    
     return (
         <div>
             <section className="login_section">

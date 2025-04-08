@@ -1,6 +1,9 @@
 import Header from "../../Components/Header/index.js";
 import Footer from "../../Components/Footer/index.js";
 
+import { useEffect } from "react";
+import { Log_in_out_header } from "../../Components/Header/index.js";
+
 import Salao1 from "../../../Assets/salao.png";
 import YoutubeColor from "../../../Assets/youtubeColor.png";
 import InstagramColor from "../../../Assets/instagramColor.png";
@@ -15,6 +18,10 @@ import "./contato.css"
 
 
 export default function Contato () {
+
+    useEffect(() => {
+        Log_in_out_header();
+    },[])
 
     return(
         <>

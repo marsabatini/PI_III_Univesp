@@ -24,7 +24,7 @@ export default function Cadastro() {
     const [rg, setRg] = useState('');
     const [cpf, setCpf] = useState('');
     const [endereco, setEndereco] = useState('');
-    const [numEndereco, setNumendereco] = useState('');
+    const [numEndereco, setNumEndereco] = useState('');
     const [cidade, setCidade] = useState('');
     const [cep, setCep] = useState('');
 
@@ -204,7 +204,7 @@ export default function Cadastro() {
                                     name="numero"
                                     type="text"
                                     value={numEndereco}
-                                    onChange={e => setNumendereco(e.target.value)}
+                                    onChange={e => setNumEndereco(e.target.value)}
                                     placeholder="Número"
                                     required
                                 />

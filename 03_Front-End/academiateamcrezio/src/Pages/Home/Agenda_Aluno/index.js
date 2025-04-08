@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { Log_in_out_header } from "../../Components/Header";
 
 import style_agenda_aluno from "./agenda_aluno.modules.css";
 
@@ -120,6 +121,7 @@ export default function Agenda_Aluno() {
     useEffect(() =>{
         retornarAgendaAluno();
         carregarAulasAluno();
+        Log_in_out_header();
         
     },[]);
 

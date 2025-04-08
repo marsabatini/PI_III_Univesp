@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { Log_in_out_header } from "../../Components/Header";
 
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
@@ -9,7 +10,10 @@ import "./planos.modules.css";
 
 export default function Planos() {
 
-
+    useEffect(() => {
+        Log_in_out_header();
+    },[])
+    
     return (
 
         <>
@@ -288,7 +292,7 @@ export default function Planos() {
                             </section>
 
                             <section className="button_mp">
-                                <button className="button_p">marque gratuitamente uma aula experimental</button>
+                                <Link to="/aula_experimental"><button className="button_p">marque gratuitamente uma aula experimental</button></Link>
                             </section>
 
                         </article>
@@ -298,9 +302,9 @@ export default function Planos() {
 
                     <br />
 
-                    <Footer />
                 </section>
             </div>
+                    <Footer />
         </>
 
 

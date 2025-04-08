@@ -86,17 +86,17 @@ public class Aluno implements UserDetails {
     )
     private List<Aula> aulasInscritas = new ArrayList<>();
 
-//    @NotBlank(message = "Campo obrigatório.")
-//    private String endereco;
-//
-//    @NotBlank(message = "Campo obrigatório.")
-//    private String numEndereco;
-//
-//    @NotBlank(message = "Campo obrigatório.")
-//    private String cidade;
-//
-//    @NotBlank(message = "Campo obrigatório.")
-//    private String cep;
+    @NotBlank(message = "Campo obrigatório.")
+    private String endereco;
+
+    @NotBlank(message = "Campo obrigatório.")
+    private String numEndereco;
+
+    @NotBlank(message = "Campo obrigatório.")
+    private String cidade;
+
+    @NotBlank(message = "Campo obrigatório.")
+    private String cep;
 
 //###################################################################################################################
 //    ====> Criar CLASSE ENDERECO: falta Estado, CEP e Complemento

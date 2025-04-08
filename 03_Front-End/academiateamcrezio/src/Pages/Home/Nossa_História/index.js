@@ -1,6 +1,9 @@
 import Header from "../../Components/Header/index.js";
 import Footer from "../../Components/Footer/index.js";
 
+import { useEffect } from "react";
+import { Log_in_out_header } from "../../Components/Header/index.js";
+
 import Eduardo from "../../../Assets/fotoEduardo.png";
 import Mestre from "../../../Assets/fotoMestreCrezio.png";
 
@@ -10,6 +13,10 @@ import style_nossahistória from "./nossahistoria.css"
 
 
 export default function Nossa_Historia() {
+
+    useEffect(() => {
+            Log_in_out_header();
+        },[])
 
     return (
         <>

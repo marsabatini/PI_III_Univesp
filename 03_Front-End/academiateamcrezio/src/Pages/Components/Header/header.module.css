@@ -54,13 +54,13 @@
     
 }
 
-.header_options li {
+.header_options ul li {
     
     margin-inline-end: 25px;
     display: inline-flex;
 }
 
-.header_options li a {
+.header_options ul li a {
 
     font-size: auto;
     text-decoration: none;
@@ -71,7 +71,7 @@
     
 }
 
-.header_options li a:hover {
+.header_options ul li a:hover {
     
     color: #3D3E40;
     
@@ -79,12 +79,13 @@
 
 .user_buttons {
     display: flex;
-    
 
 }
 
-.user_buttons button {
-    
+
+
+.log_in_out_buttons {
+    display: flex;
     width: 80px;
     height: 40px;
     font-size: 15px;
@@ -95,18 +96,20 @@
     transition: background .3s;
     transition: transform .3s;
     border: none;
-    
+    justify-content: center;
+    align-items: center;
+    margin-inline-end: 25px;
     
 }
 
-.user_buttons button:hover {
+.user_buttons li a:hover {
     
     background-color: #686869;
     transform: scale(0.95);
     
 }
 
-.user_buttons button:hover:active {
+.user_buttons li a:hover:active {
     
     transform: scale(0.90);
     
@@ -174,14 +177,14 @@ i {
         display: flex;
     }
 
-    .user_buttons button {
+    .user_buttons li a {
         width: 70px;
         height: 36px;
         font-size: 12px;
 
     }
 
-    .header_options li {
+    .header_options ul li {
         margin-inline-end: 15px;
 
     }

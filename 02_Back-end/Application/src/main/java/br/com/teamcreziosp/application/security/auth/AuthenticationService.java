@@ -45,10 +45,10 @@ public class AuthenticationService implements UserDetails {
                 .telefone(request.getTelefone())
                 .rg(request.getRg())
                 .cpf(request.getCpf())
-//                .endereco(request.getEndereco())
-//                .numEndereco(request.getNumEndereco())
-//                .cidade(request.getCidade())
-//                .cep(request.getCep())
+                .endereco(request.getEndereco())
+                .numEndereco(request.getNumEndereco())
+                .cidade(request.getCidade())
+                .cep(request.getCep())
                 .role(Role.ALUNO)
                 .build();
 
