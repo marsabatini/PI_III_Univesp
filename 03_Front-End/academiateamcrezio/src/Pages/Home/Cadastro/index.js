@@ -27,6 +27,7 @@ export default function Cadastro() {
     const [numEndereco, setNumEndereco] = useState('');
     const [cidade, setCidade] = useState('');
     const [cep, setCep] = useState('');
+    const [bairro, setBairro] = useState('');
 
 
     const navigate = useNavigate();
@@ -47,7 +48,8 @@ export default function Cadastro() {
             endereco,
             numEndereco,
             cidade,
-            cep
+            cep,
+            bairro
         }
 
         try {
@@ -206,6 +208,19 @@ export default function Cadastro() {
                                     value={numEndereco}
                                     onChange={e => setNumEndereco(e.target.value)}
                                     placeholder="Número"
+                                    required
+                                />
+                            </div>
+                            <div className="form-item">
+                                <span className="form-item-icon material-symbols-rounded">home</span>
+                                <input
+                                    className="Bairro"
+                                    title="Digite o nseu bairro"
+                                    name="bairro"
+                                    type="text"
+                                    value={bairro}
+                                    onChange={e => setBairro(e.target.value)}
+                                    placeholder="Bairro"
                                     required
                                 />
                             </div>

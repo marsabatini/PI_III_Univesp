@@ -98,6 +98,9 @@ public class Aluno implements UserDetails {
     @NotBlank(message = "Campo obrigatório.")
     private String cep;
 
+    @NotBlank(message = "Campo obrigatório.")
+    private String bairro;
+
 //###################################################################################################################
 //    ====> Criar CLASSE ENDERECO: falta Estado, CEP e Complemento
 //    ==> Isso porque esses atributos serão usados para alunos e funcionários: o código ficaria melhor lido

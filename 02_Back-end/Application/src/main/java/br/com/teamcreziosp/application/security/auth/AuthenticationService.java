@@ -49,6 +49,7 @@ public class AuthenticationService implements UserDetails {
                 .numEndereco(request.getNumEndereco())
                 .cidade(request.getCidade())
                 .cep(request.getCep())
+                .bairro(request.getBairro())
                 .role(Role.ALUNO)
                 .build();
 

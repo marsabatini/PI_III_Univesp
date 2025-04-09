@@ -196,7 +196,7 @@
 .input_tel, .input_endereco, .input_num,
 .input_cidade, .input_CEP, .input_reponsavel, 
 .input_tel_responsavel, .input_senha, .input_conf_senha,
-.input_sexo{
+.input_sexo, .input_bairro{
 
     display: flex;
     margin-bottom: 15px;
@@ -207,7 +207,7 @@
 .input_tel input, .input_endereco input, .input_num input,
 .input_cidade input, .input_CEP input, .input_reponsavel input, 
 .input_tel_responsavel input, .input_senha input, .input_conf_senha input,
-.input_sexo input{
+.input_sexo input, .input_bairro input{
 
     border: none;
     box-shadow: 0px 1px 2px 2px #acacac;
@@ -283,9 +283,18 @@
 
 .input_endereco input {
 
-    width: 100%;
+    width: 300px;
     margin-left: 1.95em;
 
+}
+
+.input_bairro input {
+    width: 300px;
+    margin-left: 1.2em;
+}
+
+.input_bairro label {
+    margin-left: 2.5em;
 }
 
 .input_num input {

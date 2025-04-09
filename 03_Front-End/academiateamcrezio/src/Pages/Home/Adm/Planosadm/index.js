@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { Log_in_out_header } from "../../../Components/Header";
 
 import Header from "../../../Components/Header";
 import Footer_Adm from "../../../Components/Footer_Adm";
@@ -9,6 +10,10 @@ import "./planosadm.modules.css"
 
 
 export default function Planosadm () {
+
+    useEffect(() => {
+        Log_in_out_header();
+    })
 
         return (
             <>

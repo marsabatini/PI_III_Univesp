@@ -43,6 +43,7 @@ public class SecurityConfiguration{
                                         "api/aulaexperimental/atualiza={email}",
                                         "/adm/alunos/{id}",
                                         "/adm/aulas",
+                                        "api/ping",
                                         "/adm/aulas/{id}",
                                         "/adm/aulas/adicionaraluno/{idAula}/{idAluno}",
                                         "/adm/aulas/removeraluno/{idAula}/{idAluno}",

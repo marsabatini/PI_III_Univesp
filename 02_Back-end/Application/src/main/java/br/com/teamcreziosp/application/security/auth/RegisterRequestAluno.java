@@ -70,4 +70,7 @@ public class RegisterRequestAluno {
     @NotBlank(message = "Campo obrigatório.")
     private String cep;
 
+    @NotBlank(message = "Campo obrigatório")
+    private String bairro;
+
 }

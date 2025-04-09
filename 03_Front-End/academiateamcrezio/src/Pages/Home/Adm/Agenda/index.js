@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import InputMask from 'react-input-mask';
 import axios from 'axios';
 
+import { Log_in_out_header } from "../../../Components/Header";
+
 import style_agenda from "./agenda.modules.css";
 
 import Gerenciador_ADM from "../../../Components/Gerenciador";
@@ -76,38 +78,16 @@ export default function Agenda() {
         
 
         
-        let aulas = "";
-        
         try {
             const response = await api.get('adm/aulas');
             const classData = response.data
-            localStorage.setItem('classData', response.data.classData)
+            
 
-            
             setClassData(classData);
-            console.log(classData);
             
-            classData.forEach(aula => {
-                const id = aula.id;
-                const [dia , hora] = aula.dataHora.split(' ');
-                const modalidade = aula.modalidade;
-                const funcionario = aula.funcionario
-                const qtddLimiteAlunos = aula.qtddLimiteAlunos
-                const inscritos =  numAlunosAula[id] || 0;
-                
-                aulas += `<tr id="aula" class="aula">
-                            <td class="atributo_aula">${dia}</td>
-                            <td class="atributo_aula">${hora}</td>
-                            <td class="atributo_aula">${modalidade}</td>
-                            <td class="atributo_aula">${funcionario}</td>
-                            <td class="atributo_aula">${qtddLimiteAlunos}</td>
-                            <td class="atributo_aula">${inscritos}</td>
-                            <td class="atributo_aula">${qtddLimiteAlunos - inscritos}</td>
-                        </tr>
-                        `
-            });
+            localStorage.setItem('classData', response.data.classData)
             
-            document.getElementById('Semana-Dia-Atual_adm').innerHTML = aulas;
+            
             
             //carregar as aulas quando carregar a página
         
@@ -141,6 +121,7 @@ export default function Agenda() {
 
     useEffect(() => {
         retornarAgendaAdm();
+        Log_in_out_header();
     }, []);
 
 
@@ -290,7 +271,27 @@ export default function Agenda() {
                                             </ul>
                                             <div id="lista_aulas" className="lista_aulas_adm">
                                                 <table id="Semana-Dia-Atual_adm" className="Semana-Dia-Atual_adm">
+                                                    <tbody>
+                                                        {classData.map(aula =>{
+                                                            const[dia,hora] = aula.dataHora.split(' ')
 
+                                                            const inscritos = numAlunosAula[aula.id] || 0
+
+                                                            return (
+                                                                <tr key={aula.id} className="aula">
+                                                                    <td className="atributo_aula_aluno_dia">{dia}</td>
+                                                                    <td className="atributo_aula_aluno_hora">{hora}</td>
+                                                                    <td className="atributo_aula_aluno_modal">{aula.modalidade}</td>
+                                                                    <td className="atributo_aula_aluno_func">{aula.funcionario}</td>
+                                                                    <td className="atributo_aula_aluno_qtddlim">{aula.qtddLimiteAlunos}</td>
+                                                                    <td className="atributo_aula_aluno_inscr">{inscritos}</td>
+                                                                    <td className="atributo_aula_aluno_vagas">{aula.qtddLimiteAlunos - inscritos}</td>
+
+                                                                </tr>
+                                                            );
+                                                        })}
+
+                                                    </tbody>
                                                     
 
                                                 </table>

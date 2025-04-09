@@ -102,7 +102,7 @@
     
 }
 
-.user_buttons li a:hover {
+.user_buttons li a:hover, .user_buttons button:hover {
     
     background-color: #686869;
     transform: scale(0.95);

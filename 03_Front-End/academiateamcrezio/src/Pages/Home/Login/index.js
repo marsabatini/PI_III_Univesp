@@ -50,10 +50,12 @@ export default function Login() {
 
             } else if (response.data.role === "ADMIN") {
                 localStorage.setItem('acessToken', response.data.token);
+                localStorage.setItem('usuarioLogado','true');
                 navigate('/adm/cadastro_gerais')
 
             } else if (response.data.role === "PROFESSOR" || response.data.role === "TREINADOR") {
                 localStorage.setItem('acessToken', response.data.token);
+                localStorage.setItem('usuarioLogado','true');
                 navigate('/adm/cadastro_gerais')
 
             } else {

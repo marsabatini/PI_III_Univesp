@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Log_in_out_header } from "../../../Components/Header";
 
 import Header from "../../../Components/Header";
 import Footer_Adm from "../../../Components/Footer_Adm";
@@ -23,13 +24,15 @@ export default function Cadastro_Geral() {
     const [rg, setRg] = useState('');
     const [cpf, setCpf] = useState('');
     const [endereco, setEndereco] = useState('');
-    const [numEndereco, setNumendereco] = useState('');
+    const [numEndereco, setNumEndereco] = useState('');
     const [cidade, setCidade] = useState('');
     const [cep, setCep] = useState('');
+    const [bairro, setBairro] = useState('')
     const [cargo, setCargo] = useState('');
     const [tipoCadastro, setTipoCadastro] = useState('');
 
 
+    //Montar função para dar um refresh nos dados
 
 
     async function cadastrarAluno(e) {
@@ -49,7 +52,8 @@ export default function Cadastro_Geral() {
             endereco,
             numEndereco,
             cidade,
-            cep
+            cep,
+            bairro
         }
 
         
@@ -88,7 +92,7 @@ export default function Cadastro_Geral() {
 
         try {
             
-            const storageToken = JSON.parse(localStorage.getItem('acessToken'));
+            const storageToken = localStorage.getItem('acessToken');
 
            
             const response = await api.post('/api/cadastrofuncionario', data, {
@@ -134,44 +138,47 @@ export default function Cadastro_Geral() {
     }
 
 
+    async function ExcluirUsuario() {
 
-    async function ExcluirUsuario(e) {
-        e.preventDefault();
 
-        const data = {
-            id
-        }
-
-        const storageToken = JSON.parse(localStorage.getItem('acessToken'));
+        const storageToken = localStorage.getItem('acessToken');
 
         try {
+            
             const responseAluno = await api.delete('/adm/alunos', {
-                data, 
-                headers:{
+                data: {id},
+                headers: {
                     'Authorization':`Bearer ${storageToken}`
                 }
-
+                
             });
-            
-            if (responseAluno.status === 200 && responseAluno.data?.success) {
-                alert('Usuário removido com Sucesso.');
-                return;
+
+            if (responseAluno.status === 200) {
+                alert('Aluno excluído com Sucesso.');
+            }else{
+                alert('Erro ao excluir o aluno')
             }
 
-        } catch (err) {
-            alert('Id não encontrado.');
-        }
-        try {
+            
+            
 
+        } catch (err) {
+            alert('Id do aluno não encontrado...');
+            return;
+        }
+        
+        
+        try {
+        
             const responseFuncionario = await api.delete('/api/funcionarios', {
-                data,
+                data: {id},
                 headers: {
                     'Authorization':`Bearer ${storageToken}`
                 }
                 
             });
             
-            if(responseFuncionario.status === 200){
+           if(responseFuncionario.status === 200){
                 alert('Usuário removido com Sucesso.');
                 
             } 
@@ -216,6 +223,10 @@ export default function Cadastro_Geral() {
 
     }
 
+    useEffect(() => {
+        Log_in_out_header();
+    })
+
     return (
 
         <>
@@ -244,6 +255,10 @@ export default function Cadastro_Geral() {
                                         <span className="slider_perfis round"></span>
                                     </label>
 
+                                    <div className={style_cadastros_gerais.refresh}>
+                                        <i class="bi bi-arrow-clockwise"></i>  
+                                    </div>
+                                   
 
                                     <form className={style_cadastros_gerais.input_aluno}>
                                         <input 
@@ -257,7 +272,7 @@ export default function Cadastro_Geral() {
                                         />
                                     </form>
                                         <button className={style_cadastros_gerais.consultar_aluno} onClick={ConsultarUsuario} >Consultar</button>
-                                        <button className={style_cadastros_gerais.delete} onClick={ExcluirUsuario}>Excluir</button>
+                                        
                                 </div>
 
                                 <div className={style_cadastros_gerais.quadro_dados_cadastrais}>
@@ -449,6 +464,8 @@ export default function Cadastro_Geral() {
                                                 </div>
                                             </div>
 
+                                            <div>
+
                                             <div className={style_cadastros_gerais.input_endereco}>
                                                 <label for="iusuario_endereco">Endereço</label>
                                                 <input 
@@ -462,6 +479,21 @@ export default function Cadastro_Geral() {
                                                 />
                                             </div>
 
+                                            <div className={style_cadastros_gerais.input_bairro}>
+                                                <label for="iusuario_endereco">Bairro</label>
+                                                <input 
+                                                type="text" 
+                                                name="bairro" 
+                                                id="iusuario_bairro"
+                                                title="Digite seu bairro"
+                                                defaultValue={userData?.bairro || ''}
+                                                onChange={e=>setBairro(e.target.value)}
+                                                required
+                                                />
+                                            </div>
+
+                                            </div>
+
                                             <div>
 
                                                 <div className={style_cadastros_gerais.input_num}>
@@ -472,7 +504,7 @@ export default function Cadastro_Geral() {
                                                     id="iusuario_num"
                                                     title="Digite o número de seu endereço"
                                                     defaultValue={userData?.numEndereco || ''}
-                                                    onChange={e=> setNumendereco(e.target.value)}
+                                                    onChange={e=> setNumEndereco(e.target.value)}
                                                     required
                                                     />
                                                 </div>
@@ -559,7 +591,7 @@ export default function Cadastro_Geral() {
                                                 <button type="submit">Cadastrar Usuario</button>
                                                 <button>Planos</button>
                                                 <button>Imprimir</button>
-                                                
+                                                <button data-action="excluir" onClick={ExcluirUsuario}>Excluir</button>
 
                                             </div>
 
