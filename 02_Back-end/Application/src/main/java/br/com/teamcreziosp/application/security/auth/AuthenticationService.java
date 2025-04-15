@@ -35,6 +35,9 @@ public class AuthenticationService implements UserDetails {
     // EXPLICAÇÃO: Este método realizar o cadastro dos alunos.
     public AuthenticationResponse cadastro(RegisterRequestAluno request){
 
+        //TODO
+        var endereco = Endereco.builder().build();
+
         var aluno = Aluno.builder()
                 .nome(request.getNome())
                 .sobrenome(request.getSobrenome())
@@ -45,11 +48,7 @@ public class AuthenticationService implements UserDetails {
                 .telefone(request.getTelefone())
                 .rg(request.getRg())
                 .cpf(request.getCpf())
-                .endereco(request.getEndereco())
-                .numEndereco(request.getNumEndereco())
-                .cidade(request.getCidade())
-                .cep(request.getCep())
-                .bairro(request.getBairro())
+                .endereco(endereco)
                 .role(Role.ALUNO)
                 .build();
 
@@ -120,19 +119,6 @@ public class AuthenticationService implements UserDetails {
                     .cargo(request.getCargo())
                     .role(Role.PROFESSOR)
                     .build();
-            case "Treinador" -> Treinador.builder()
-                    .nome(request.getNome())
-                    .sobrenome(request.getSobrenome())
-                    .dataNascimento(request.getDataNascimento())
-                    .email(request.getEmail())
-                    .senha(passwordEncoder.encode(request.getSenha()))
-                    .sexo(request.getSexo())
-                    .telefone(request.getTelefone())
-                    .rg(request.getRg())
-                    .cpf(request.getCpf())
-                    .cargo(request.getCargo())
-                    .role(Role.TREINADOR)
-                    .build();
             default -> throw new IllegalArgumentException("Cargo de funcionário inválido: " + request.getCargo());
         };
 
@@ -169,7 +155,6 @@ public class AuthenticationService implements UserDetails {
         String plano;
         String email;
         String graduacao;
-        String aulasProxGrad;
         String exameMedico;
         String role;
         UserDetails userEmail;
@@ -187,9 +172,7 @@ public class AuthenticationService implements UserDetails {
             sexo = funcionario.get().getSexo();
             plano = null;
             email = funcionario.get().getEmail();
-            exameMedico = null;
             graduacao = null;
-            aulasProxGrad = null;
             role = funcionario.get().getRole().toString();
             userEmail = funcionario.get();
         } else if(aluno.isPresent()){
@@ -200,9 +183,7 @@ public class AuthenticationService implements UserDetails {
             sexo = aluno.get().getSexo();
             plano = aluno.get().getPlano();
             email = aluno.get().getEmail();
-            exameMedico = aluno.get().getExameMedico();
             graduacao = aluno.get().getGraduacao();
-            aulasProxGrad = aluno.get().getAulas_prox_grad();
             statusPlano = aluno.get().getStatusPlano();
             role = aluno.get().getRole().toString();
             userEmail = aluno.get();
@@ -225,8 +206,6 @@ public class AuthenticationService implements UserDetails {
                 .plano(plano)
                 .statusPlano(statusPlano)
                 .graduacao(graduacao)
-                .aulas_prox_graduacao(aulasProxGrad)
-                .exameMedico(exameMedico)
                 .role(Role.valueOf(role))
                 .build();
     }

@@ -73,24 +73,12 @@ public class Funcionario implements UserDetails {
     @NotBlank(message = "Campo obrigatório.")
     private String cargo;
 
-//###################################################################################################################
-//    ====> Criar CLASSE ENDERECO: falta Estado, CEP e Complemento
-//    ==> Isso porque esses atributos serão usados para alunos e funcionários: o código ficaria melhor lido
-//    ==> Mas isso precisaria de uma TABELA ENDERECO
-//
-//    private String endereco;
-//
-//    private String complemento;
-//
-//    private String numero;
-//
-//    private String bairro;
-//
-//    private String cidade;
-//###################################################################################################################
-
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    private Endereco endereco;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

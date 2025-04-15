@@ -25,7 +25,6 @@ public class AlunoController {
         alunoRepository.save(aluno);
     }
 
-
     @GetMapping("/alunos/{id}")
     public Optional<Aluno> findById(@PathVariable(value = "id") Integer id) {
         return alunoRepository.findById(id);
@@ -40,5 +39,4 @@ public class AlunoController {
     public Aluno update(@RequestBody Aluno aluno) {
         return alunoRepository.save(aluno);
     }
-
 }

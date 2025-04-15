@@ -3,11 +3,9 @@ package br.com.teamcreziosp.application.controller;
 import br.com.teamcreziosp.application.model.Aluno;
 import br.com.teamcreziosp.application.model.Aula;
 import br.com.teamcreziosp.application.model.Funcionario;
-import br.com.teamcreziosp.application.model.Professor;
 import br.com.teamcreziosp.application.repository.AlunoRepository;
 import br.com.teamcreziosp.application.repository.AulaRepository;
 import br.com.teamcreziosp.application.repository.FuncionarioRepository;
-import br.com.teamcreziosp.application.repository.ProfessorRepository;
 import br.com.teamcreziosp.application.responses.AulaResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @RestController
@@ -24,9 +21,6 @@ public class AulaController {
 
     @Autowired
     private AulaRepository aulaRepository;
-
-    //@Autowired
-    // private ProfessorRepository professorRepository;
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;
@@ -65,7 +59,6 @@ public class AulaController {
     }
 
     @DeleteMapping("/aulas/{id}")
-    //@ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<String> delete(@PathVariable(value = "id") Integer id) {
         Optional<Aula> buscarAula = aulaRepository.findById(id);
 
@@ -134,7 +127,7 @@ public class AulaController {
         }
     }
 
-    //buscar alunos inscritos na aula
+    //buscar alunos inscritos em uma aula
     @GetMapping("/aulas/alunosinscritosnaaula/{idAula}")
     public ResponseEntity<List<String>> alunosInscritosNaAula(@PathVariable(value = "idAula") Integer idAula) {
         Optional<Aula> buscarAula = aulaRepository.findById(idAula);
@@ -179,6 +172,5 @@ public class AulaController {
 
         return ResponseEntity.status(HttpStatus.OK).body(aulasResponse);
     }
-
 
 }

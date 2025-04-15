@@ -28,7 +28,7 @@ import java.util.List;
 public class Aluno implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @NotBlank(message = "Campo obrigatório.")
@@ -66,13 +66,13 @@ public class Aluno implements UserDetails {
 
     private String graduacao;
 
-    private String aulas_prox_grad;
-
-    private String exameMedico;
-
     private String plano;
 
     private String statusPlano;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    private Endereco endereco;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -85,37 +85,6 @@ public class Aluno implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "aula_id")
     )
     private List<Aula> aulasInscritas = new ArrayList<>();
-
-    @NotBlank(message = "Campo obrigatório.")
-    private String endereco;
-
-    @NotBlank(message = "Campo obrigatório.")
-    private String numEndereco;
-
-    @NotBlank(message = "Campo obrigatório.")
-    private String cidade;
-
-    @NotBlank(message = "Campo obrigatório.")
-    private String cep;
-
-    @NotBlank(message = "Campo obrigatório.")
-    private String bairro;
-
-//###################################################################################################################
-//    ====> Criar CLASSE ENDERECO: falta Estado, CEP e Complemento
-//    ==> Isso porque esses atributos serão usados para alunos e funcionários: o código ficaria melhor lido
-//    ==> Mas isso precisaria de uma TABELA ENDERECO
-//
-//    private String endereco;
-//
-//    private String complemento;
-//
-//    private String numero;
-//
-//    private String bairro;
-//
-//    private String cidade;
-//###################################################################################################################
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

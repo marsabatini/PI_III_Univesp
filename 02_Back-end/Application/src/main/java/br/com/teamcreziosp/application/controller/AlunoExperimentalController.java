@@ -2,7 +2,6 @@ package br.com.teamcreziosp.application.controller;
 
 import br.com.teamcreziosp.application.model.AlunoExperimental;
 import br.com.teamcreziosp.application.repository.AlunoExperimentalRepository;
-import br.com.teamcreziosp.application.security.auth.AuthenticationResponseAlunoExperimental;
 import br.com.teamcreziosp.application.service.AlunoExperimentalService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/aulaexperimental")
 @RequiredArgsConstructor
 public class AlunoExperimentalController {
-
 
     private final AlunoExperimentalRepository repository;
     private final AlunoExperimentalService service;
@@ -29,6 +27,4 @@ public class AlunoExperimentalController {
     public ResponseEntity<AlunoExperimental> atualiza(@PathVariable String email, @RequestBody AlunoExperimental alunoExperimental){
         return ResponseEntity.ok(service.atualizarAlunoExperimental(email, alunoExperimental));
     }
-
-
 }

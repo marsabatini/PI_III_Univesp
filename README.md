@@ -25,6 +25,7 @@ Para rodar localmente a aplicação é necessário que você tenha instalado loc
 Para rodar localmente a aplicação é necessário que você tenha instalado localmente:
 * Node.js
 * npm
+
 Em seguida, abra um terminal no diretório ```PI_II_Univesp/03_Front-End/academiateamcrezio``` e execute os comandos a seguir:
 ```shell
 npm install
