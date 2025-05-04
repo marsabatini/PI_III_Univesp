@@ -3,16 +3,20 @@ package br.com.teamcreziosp.application.controller;
 import br.com.teamcreziosp.application.model.Aluno;
 import br.com.teamcreziosp.application.model.Aula;
 import br.com.teamcreziosp.application.model.Funcionario;
+import br.com.teamcreziosp.application.model.Presenca;
 import br.com.teamcreziosp.application.repository.AlunoRepository;
 import br.com.teamcreziosp.application.repository.AulaRepository;
 import br.com.teamcreziosp.application.repository.FuncionarioRepository;
+import br.com.teamcreziosp.application.repository.PresencaRepository;
 import br.com.teamcreziosp.application.responses.AulaResponse;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @RestController
@@ -27,6 +31,9 @@ public class AulaController {
 
     @Autowired
     private AlunoRepository alunoRepository;
+
+    @Autowired
+    private PresencaRepository presencaRepository;
 
     @GetMapping("/aulas")
     public List<AulaResponse> findAll() {
@@ -78,8 +85,10 @@ public class AulaController {
 
     //adicionar restricao de quantidade de alunos
     @PostMapping("/aulas/adicionaraluno/{idAluno}/{idAula}")
-    public ResponseEntity<String> adicionarAluno(@PathVariable(value = "idAula") Integer idAula, @PathVariable(value = "idAluno") Integer idAluno) {
-
+    public ResponseEntity<String> adicionarAluno(
+            @PathVariable(value = "idAula") Integer idAula,
+            @PathVariable(value = "idAluno") Integer idAluno)
+    {
         Optional<Aula> buscarAula = aulaRepository.findById(idAula);
         if (buscarAula.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aula não encontrada.");
@@ -104,7 +113,10 @@ public class AulaController {
     }
     
     @DeleteMapping("/aulas/removeraluno/{idAluno}/{idAula}")
-    public ResponseEntity<String> removerAluno(@PathVariable(value = "idAula") Integer idAula, @PathVariable(value = "idAluno") Integer idAluno) {
+    public ResponseEntity<String> removerAluno(
+            @PathVariable(value = "idAula") Integer idAula,
+            @PathVariable(value = "idAluno") Integer idAluno)
+    {
         Optional<Aula> buscarAula = aulaRepository.findById(idAula);
         if (buscarAula.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aula não encontrada.");
@@ -171,6 +183,37 @@ public class AulaController {
         aulasInscritas.forEach(aula -> aulasResponse.add(new AulaResponse(aula)));
 
         return ResponseEntity.status(HttpStatus.OK).body(aulasResponse);
+    }
+
+    @PostMapping("/aulas/registrarpresenca/{idAluno}/{idAula}")
+    public ResponseEntity<String> registrarPresenca(
+            @PathVariable(value = "idAluno") Integer idAluno,
+            @PathVariable(value = "idAula") Integer idAula)
+    {
+        Optional<Aula> buscarAula = aulaRepository.findById(idAula);
+        Optional<Aluno> buscarAluno = alunoRepository.findById(idAluno);
+
+        if(buscarAula.isPresent() && buscarAluno.isPresent()) {
+            Aula aula = buscarAula.get();
+            Aluno aluno = buscarAluno.get();
+            if(buscarAula.get().getAlunosInscritos().contains(aluno)) {
+
+                LocalDateTime dataHoraAula = aula.getDataHora();
+                LocalDateTime dataHoraAtual = LocalDateTime.now();
+
+                if (!dataHoraAtual.isBefore(dataHoraAula)) {
+                    Presenca presenca = new Presenca(aula, aluno, LocalDateTime.now());
+                    presencaRepository.save(presenca);
+                    return ResponseEntity.ok("Presença confirmada com sucesso!");
+                } else {
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A presença só pode ser registrada após o início da aula.");
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aluno não cadastrado na aula.");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aula ou aluno não existem.");
+        }
     }
 
 }

@@ -34,7 +34,7 @@ public class Aula implements UserDetails {
 
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
-    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIdentityReference(alwaysAsId = true)  // indica que ao serializar o objeto, o Jackson deve usar apenas o ID
     private Funcionario funcionario;
 
     @NotNull(message = "Campo obrigatório.")
@@ -43,6 +43,10 @@ public class Aula implements UserDetails {
     @JsonIgnore
     @ManyToMany(mappedBy = "aulasInscritas")
     private List<Aluno> alunosInscritos = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "aula", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Presenca> presencas = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

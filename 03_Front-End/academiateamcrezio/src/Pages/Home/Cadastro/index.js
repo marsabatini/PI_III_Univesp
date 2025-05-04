@@ -10,8 +10,6 @@ import logo from "../../../Assets/logopng.png"
 
 import api from "../../../Services/Api";
 
-
-
 export default function Cadastro() {
 
     const [nome, setNome] = useState('');
@@ -46,14 +44,16 @@ export default function Cadastro() {
             rg,
             cpf,
             endereco,
-            numEndereco,
+            numero,
+            complemento,
+            bairro,
             cidade,
-            cep,
-            bairro
+            estado,
+            cep
         }
 
         try {
-            await api.post('api/cadastro', data);
+            await api.post('api/cadastroaluno', data);
 
             alert('Usuário cadastrado com Sucesso.');
 
@@ -62,7 +62,6 @@ export default function Cadastro() {
         } catch (err) {
             alert('Não foi possível cadastrar.');
         }
-
     }
 
     return (

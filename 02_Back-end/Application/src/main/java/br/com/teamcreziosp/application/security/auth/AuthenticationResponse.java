@@ -24,20 +24,9 @@ public class AuthenticationResponse {
 
     String dataNascimento;
 
-    String graduacao;
-
-    String aulas_prox_graduacao;
-
-    String sexo;
-
-    String plano;
-
-    String statusPlano;
-
-    String exameMedico;
+    Character sexo;
 
     String cargo;
 
     Role role;
-
 }

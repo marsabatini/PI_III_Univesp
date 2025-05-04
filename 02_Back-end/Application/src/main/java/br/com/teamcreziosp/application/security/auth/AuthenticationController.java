@@ -2,7 +2,6 @@ package br.com.teamcreziosp.application.security.auth;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +30,10 @@ public class AuthenticationController {
     // de cada campo ainda não estão sendo retornadas, conforme os @Valids.
     // Porém, as Valitations estão funcionando.
 
-    @PostMapping("/cadastro")
-    public ResponseEntity<AuthenticationResponse> cadastro(@Valid @RequestBody RegisterRequestAluno request){
+    @PostMapping("/cadastroaluno")
+    public ResponseEntity<AuthenticationResponse> cadastroAluno(@Valid @RequestBody RegisterRequestAluno request){
 
-        return ResponseEntity.ok(service.cadastro(request));
+        return ResponseEntity.ok(service.cadastroAluno(request));
     }
 
     @PostMapping("/aulaexperimental")

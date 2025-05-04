@@ -34,10 +34,8 @@ export default function Cadastro_Geral() {
 
     //Montar função para dar um refresh nos dados
 
-
     async function cadastrarAluno(e) {
         e.preventDefault();
-
         
         const data = {
             nome,
@@ -50,23 +48,22 @@ export default function Cadastro_Geral() {
             rg,
             cpf,
             endereco,
-            numEndereco,
+            numero,
+            complemento,
+            bairro,
             cidade,
-            cep,
-            bairro
+            estado,
+            cep
         }
-
         
             try {
-                await api.post('api/cadastro', data);
+                await api.post('api/cadastroaluno', data);
     
                 alert('Usuário cadastrado com Sucesso.');
-    
-                
+
             } catch (err) {
                 alert('Não foi possível cadastrar.');
             }
-        
 
     }
 
@@ -137,9 +134,7 @@ export default function Cadastro_Geral() {
         setTipoCadastro(e.target.value)
     }
 
-
     async function ExcluirUsuario() {
-
 
         const storageToken = localStorage.getItem('acessToken');
 
@@ -158,9 +153,6 @@ export default function Cadastro_Geral() {
             }else{
                 alert('Erro ao excluir o aluno')
             }
-
-            
-            
 
         } catch (err) {
             alert('Id do aluno não encontrado...');
@@ -606,8 +598,6 @@ export default function Cadastro_Geral() {
                         </section>
 
                     </div>
-
-
 
                 </section>
             </div>
