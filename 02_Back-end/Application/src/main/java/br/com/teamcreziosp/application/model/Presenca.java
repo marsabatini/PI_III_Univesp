@@ -21,7 +21,7 @@ public class Presenca {
     @JoinColumn(name = "aluno_id")
     private Aluno aluno;
 
-    private LocalDateTime horarioRegistro = LocalDateTime.now();
+    private LocalDateTime horarioRegistro;
 
     public Presenca(Aula aula, Aluno aluno, LocalDateTime horarioRegistro) {
         this.aula = aula;

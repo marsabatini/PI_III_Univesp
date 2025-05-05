@@ -3,21 +3,20 @@ package br.com.teamcreziosp.application.controller;
 import br.com.teamcreziosp.application.model.Aluno;
 import br.com.teamcreziosp.application.model.Aula;
 import br.com.teamcreziosp.application.model.Funcionario;
-import br.com.teamcreziosp.application.model.Presenca;
 import br.com.teamcreziosp.application.repository.AlunoRepository;
 import br.com.teamcreziosp.application.repository.AulaRepository;
 import br.com.teamcreziosp.application.repository.FuncionarioRepository;
-import br.com.teamcreziosp.application.repository.PresencaRepository;
 import br.com.teamcreziosp.application.responses.AulaResponse;
-import jakarta.validation.constraints.NotNull;
+import br.com.teamcreziosp.application.service.PresencaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/adm")
@@ -33,7 +32,7 @@ public class AulaController {
     private AlunoRepository alunoRepository;
 
     @Autowired
-    private PresencaRepository presencaRepository;
+    private PresencaService presencaService;
 
     @GetMapping("/aulas")
     public List<AulaResponse> findAll() {
@@ -190,30 +189,11 @@ public class AulaController {
             @PathVariable(value = "idAluno") Integer idAluno,
             @PathVariable(value = "idAula") Integer idAula)
     {
-        Optional<Aula> buscarAula = aulaRepository.findById(idAula);
-        Optional<Aluno> buscarAluno = alunoRepository.findById(idAluno);
-
-        if(buscarAula.isPresent() && buscarAluno.isPresent()) {
-            Aula aula = buscarAula.get();
-            Aluno aluno = buscarAluno.get();
-            if(buscarAula.get().getAlunosInscritos().contains(aluno)) {
-
-                LocalDateTime dataHoraAula = aula.getDataHora();
-                LocalDateTime dataHoraAtual = LocalDateTime.now();
-
-                if (!dataHoraAtual.isBefore(dataHoraAula)) {
-                    Presenca presenca = new Presenca(aula, aluno, LocalDateTime.now());
-                    presencaRepository.save(presenca);
-                    return ResponseEntity.ok("Presença confirmada com sucesso!");
-                } else {
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A presença só pode ser registrada após o início da aula.");
-                }
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aluno não cadastrado na aula.");
-            }
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aula ou aluno não existem.");
+        try {
+            presencaService.registrarPresenca(idAluno, idAula);
+            return ResponseEntity.ok("Presença confirmada com sucesso!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
-
 }

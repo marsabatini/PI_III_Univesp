@@ -43,6 +43,7 @@ public class SecurityConfiguration{
                                         "api/ping",
                                         "/adm/aulas/{id}",
                                         "/adm/aulas/adicionaraluno/{idAula}/{idAluno}",
+                                        "/adm/aulas/registrarpresenca/{idAluno}/{idAula}",
                                         "/adm/aulas/removeraluno/{idAula}/{idAluno}",
                                         "/adm/aulas/alunosinscritosnaaula/{idAula}",
                                         "/adm/aulas/aulasdoaluno/{idAluno}",
