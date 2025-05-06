@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import InputMask from 'react-input-mask';
 
@@ -9,12 +9,14 @@ import Footer from "../../Components/Footer";
 import logo from "../../../Assets/logopng.png"
 
 import api from "../../../Services/Api";
+import { Input } from "@mui/material";
 
 export default function Cadastro() {
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [confSenha, setConfSenha] = useState('');
     const [sobrenome, setSobrenome] = useState('');
     const [dataNascimento, setDatanascimento] = useState('');
     const [sexo, setSexo] = useState('');
@@ -22,13 +24,33 @@ export default function Cadastro() {
     const [rg, setRg] = useState('');
     const [cpf, setCpf] = useState('');
     const [endereco, setEndereco] = useState('');
-    const [numEndereco, setNumEndereco] = useState('');
     const [cidade, setCidade] = useState('');
     const [cep, setCep] = useState('');
     const [bairro, setBairro] = useState('');
+    const [complemento, setComplemento] = useState('');
+    const [numero, setNumero] = useState('');
+    const [estado, setEstado] = useState('');
+    const [errosFormulario, setErrosFormulario] = useState({});
 
 
     const navigate = useNavigate();
+
+    const validarFormulario = () => {
+        const erros = {};
+      
+        if (senha.length < 8) erros.senha = "A senha deve ter pelo menos 8 caracteres";
+        if (senha !== confSenha) erros.confSenha = "As senhas não são iguais"
+        if (!/^\d{3}.\d{3}.\d{3}-\d{2}$/.test(cpf)) erros.cpf = "CPF inválido ou já existente";
+        if (!/^\d{2}.\d{3}.\d{3}-\d{1}$/.test(rg)) erros.rg = "RG inválido ou já existente";
+        if (!/^\d{5}-\d{3}$/.test(cep)) erros.cep = "CEP inválido ou já existente";
+        if (!/\S+@\S+\.\S+/.test(email)) erros.email = "Email inválido ou já existente";
+        if (!/^\(\d{2}\)\d{5}-\d{4}$/.test(telefone)) erros.telefone = "Tel inválido ou já existente";
+
+        
+      
+        setErrosFormulario(erros);
+        return Object.keys(erros).length === 0;
+      };
 
     async function cadastrarAluno(e) {
         e.preventDefault();
@@ -52,6 +74,13 @@ export default function Cadastro() {
             cep
         }
 
+        if (!validarFormulario()) {
+           
+            alert("Você inseriu dados não válidos, tente novamente...")
+            
+            return;
+        }
+
         try {
             await api.post('api/cadastroaluno', data);
 
@@ -63,6 +92,7 @@ export default function Cadastro() {
             alert('Não foi possível cadastrar.');
         }
     }
+
 
     return (
         <div>
@@ -119,22 +149,33 @@ export default function Cadastro() {
                                     {(inputProps) => <input type="text" {...inputProps} />}
                                 </InputMask>
                             </div>
-                            <div className="form-item">
-                                <span className="form-item-icon material-symbols-rounded">wc</span>
+                            <div className="form-item gender">
+                                <span className="gender_icon material-symbols-rounded">wc</span>
                                 <input
                                     className="sexo"
                                     title="Sexo"
                                     name="sexo"
-                                    type="text"
-                                    value={sexo}
+                                    type="radio"
+                                    value={"F"}
                                     onChange={e => setSexo(e.target.value)}
-                                    placeholder="Sexo"
+                                    
                                     required
-                                />
+                                /><label>Feminino</label>
+                                <input
+                                    className="sexo"
+                                    title="Sexo"
+                                    name="sexo"
+                                    type="radio"
+                                    value={"M"}
+                                    onChange={e => setSexo(e.target.value)}
+                                    
+                                    required
+                                /><label>Masculino</label>
                             </div>
                             <div className="form-item">
                                 <span className="form-item-icon material-symbols-rounded">id_card</span>
-                                <input
+                                <InputMask
+                                    mask="99.999.999-9"
                                     className="rg"
                                     title="Digite seu RG"
                                     name="rg"
@@ -143,11 +184,12 @@ export default function Cadastro() {
                                     onChange={e => setRg(e.target.value)}
                                     placeholder="RG"
                                     required
-                                />
+                                />{errosFormulario.rg && <p className="erros">{errosFormulario.rg}</p>}
                             </div>
                             <div className="form-item">
                                 <span className="form-item-icon material-symbols-rounded">id_card</span>
-                                <input
+                                <InputMask
+                                    mask="999.999.999-99"
                                     className="cpf"
                                     title="Digite seu CPF"
                                     name="cpf"
@@ -156,7 +198,7 @@ export default function Cadastro() {
                                     onChange={e => setCpf(e.target.value)}
                                     placeholder="CPF"
                                     required
-                                />
+                                />{errosFormulario.cpf && <p className="erros">{errosFormulario.cpf}</p>}
                             </div>
                             <div className="form-item">
                                 <span className="form-item-icon material-symbols-rounded">mail</span>
@@ -169,11 +211,12 @@ export default function Cadastro() {
                                     onChange={e => setEmail(e.target.value)}
                                     placeholder="E-mail"
                                     required
-                                />
+                                />{errosFormulario.email && <p className="erros">{errosFormulario.email}</p>}
                             </div>
                             <div className="form-item">
                                 <span className="form-item-icon material-symbols-rounded">phone_iphone</span>
-                                <input
+                                <InputMask
+                                    mask="(99)99999-9999"
                                     className="telefone"
                                     title="Digite seu telefone"
                                     name="telefone"
@@ -182,7 +225,7 @@ export default function Cadastro() {
                                     onChange={e => setTelefone(e.target.value)}
                                     placeholder="Telefone"
                                     required
-                                />
+                                />{errosFormulario.telefone && <p className="erros">{errosFormulario.telefone}</p>}
                             </div>
                             <div className="form-item">
                                 <span className="form-item-icon material-symbols-rounded">home</span>
@@ -204,9 +247,22 @@ export default function Cadastro() {
                                     title="Digite o número de seu endereço"
                                     name="numero"
                                     type="text"
-                                    value={numEndereco}
-                                    onChange={e => setNumEndereco(e.target.value)}
+                                    value={numero}
+                                    onChange={e => setNumero(e.target.value)}
                                     placeholder="Número"
+                                    required
+                                />
+                            </div>
+                            <div className="form-item">
+                                <span className="form-item-icon material-symbols-rounded">home</span>
+                                <input
+                                    className="Complemento"
+                                    title="Digite o complemento"
+                                    name="complemento"
+                                    type="text"
+                                    value={complemento}
+                                    onChange={e => setComplemento(e.target.value)}
+                                    placeholder="Complemento"
                                     required
                                 />
                             </div>
@@ -239,6 +295,20 @@ export default function Cadastro() {
                             <div className="form-item">
                                 <span className="form-item-icon material-symbols-rounded">home</span>
                                 <input
+                                    className="Estado"
+                                    title="Digite seu Estado"
+                                    name="estado"
+                                    type="text"
+                                    value={estado}
+                                    onChange={e => setEstado(e.target.value)}
+                                    placeholder="Estado"
+                                    required
+                                />
+                            </div>
+                            <div className="form-item">
+                                <span className="form-item-icon material-symbols-rounded">home</span>
+                                <InputMask
+                                    mask="99999-999"
                                     className="CEP"
                                     title="Digite seu CEP"
                                     name="cep"
@@ -247,7 +317,7 @@ export default function Cadastro() {
                                     onChange={e => setCep(e.target.value)}
                                     placeholder="CEP"
                                     required
-                                />
+                                />{errosFormulario.cep && <p className="erros">{errosFormulario.cep}</p>}
                             </div>
                             <div className="form-item">
                                 <span className="form-item-icon material-symbols-rounded">lock</span>
@@ -259,7 +329,8 @@ export default function Cadastro() {
                                     value={senha}
                                     onChange={e => setSenha(e.target.value)}
                                     placeholder="Senha"
-                                    required />
+                                    required 
+                                    />{errosFormulario.senha && <p className="erros">{errosFormulario.senha}</p>}
                             </div>
                             <div className="form-item">
                                 <span className="form-item-icon material-symbols-rounded">lock</span>
@@ -269,8 +340,10 @@ export default function Cadastro() {
                                     name="confpass"
                                     type="password"
                                     placeholder="Confirme sua senha"
+                                    value={confSenha}
+                                    onChange={e => setConfSenha(e.target.value)}
                                     required
-                                />
+                                    />{errosFormulario.confSenha && <p className="erros">{errosFormulario.confSenha}</p>}
                             </div>
                             <div className="form-item-other">
                                 <Link className="link-quem" to="/quem-somos">Sobre o Projeto</Link>

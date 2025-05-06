@@ -95,6 +95,16 @@ public class AuthenticationService implements UserDetails {
     // consequentemente, instaciar novos tipos de funcionários.
     public AuthenticationResponse cadastroFuncionario(RegisterRequestFuncionario request){
 
+        var endereco = Endereco.builder()
+                .endereco(request.getEndereco())
+                .numero(request.getNumero())
+                .complemento(request.getComplemento())
+                .bairro(request.getBairro())
+                .cidade(request.getCidade())
+                .estado(request.getEstado())
+                .cep(request.getCep())
+                .build();
+
         Funcionario funcionario = switch (request.getCargo()) {
             case "Administrador" -> Adm.builder()
                     .nome(request.getNome())
@@ -107,6 +117,7 @@ public class AuthenticationService implements UserDetails {
                     .rg(request.getRg())
                     .cpf(request.getCpf())
                     .cargo(request.getCargo())
+                    .endereco(endereco)
                     .role(Role.ADMIN)
                     .build();
             case "Professor" -> Professor.builder()
@@ -120,6 +131,7 @@ public class AuthenticationService implements UserDetails {
                     .rg(request.getRg())
                     .cpf(request.getCpf())
                     .cargo(request.getCargo())
+                    .endereco(endereco)
                     .role(Role.PROFESSOR)
                     .build();
             default -> throw new IllegalArgumentException("Cargo de funcionário inválido: " + request.getCargo());

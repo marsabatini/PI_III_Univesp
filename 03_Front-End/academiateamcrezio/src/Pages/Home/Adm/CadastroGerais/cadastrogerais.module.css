@@ -273,12 +273,19 @@
 }
 
 .input_sexo input{
-    width: 200px;
-    margin-left: 2em;
+    box-shadow: none;
+    margin-left: 2rem;
 }
 
 .input_sexo label {
     margin-left: 2.5em;
+}
+
+.input_sexo label.gender {
+    align-content: center;
+    margin-left: 10px;
+    font-size: 20px;
+  
 }
 
 .input_endereco input {

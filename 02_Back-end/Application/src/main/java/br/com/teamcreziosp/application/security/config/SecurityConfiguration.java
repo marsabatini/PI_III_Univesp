@@ -48,14 +48,14 @@ public class SecurityConfiguration{
                                         "/adm/aulas/alunosinscritosnaaula/{idAula}",
                                         "/adm/aulas/aulasdoaluno/{idAluno}",
                                         "/api/funcionarios/{id}",
-                                        "/api/funcionarios"
+                                        "/api/funcionarios",
+                                        "/api/cadastrofuncionario"
                                         ) //===> REFATORAR: permitir apenas Roles EXPERIMENTAL
                                         .permitAll()
                         .requestMatchers("/api/agenda").hasAuthority("EXPERIMENTAL")
                         .requestMatchers("/api/aluno/agenda").hasAuthority("ALUNO")
                         .requestMatchers("/adm/alunos").hasAuthority("ADMIN")
-                        .requestMatchers("/api/cadastrofuncionario").hasAuthority("PROFESSOR")
-                        .requestMatchers("/api/cadastrofuncionario").hasAuthority("ADMIN")
+                        //.requestMatchers("/api/cadastrofuncionario").hasAnyAuthority("PROFESSOR","ADMIN")
                         )  //===> Endpoint funciona, mas acesso por hasRole não.
                         // COM hasAuthority() FUNCIONOU!
 

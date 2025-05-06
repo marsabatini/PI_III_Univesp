@@ -58,7 +58,6 @@ public class Funcionario implements UserDetails {
     @NotBlank(message = "Campo obrigatório.")
     private String senha;
 
-    @NotBlank(message = "Campo obrigatório.")
     private Character sexo;
 
     @NotBlank(message = "Campo obrigatório.")
@@ -67,7 +66,7 @@ public class Funcionario implements UserDetails {
     @NotBlank(message = "Campo obrigatório.")
     private String rg;
 
-    @CPF(message = "CPF inválido.")
+    //@CPF(message = "CPF inválido.")
     @NotBlank(message = "Campo obrigatório.")
     private String cpf;
 

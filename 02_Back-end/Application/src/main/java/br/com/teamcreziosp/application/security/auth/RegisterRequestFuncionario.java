@@ -37,7 +37,7 @@ public class RegisterRequestFuncionario {
     @NotBlank(message = "Campo obrigatório.")
     private String senha;
 
-    @NotBlank(message = "Campo obrigatório.")
+
     private Character sexo;
 
     @NotBlank(message = "Campo obrigatório.")

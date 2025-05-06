@@ -58,13 +58,11 @@ export default function Login() {
                 localStorage.setItem('usuarioLogado','true');
                 navigate('/adm/cadastro_gerais')
 
-            } else {
-                alert("Usuário não encontrado!!!!!!!");
-            }
+            } 
             
         } catch (err) {
             // mensagemErro('Usuário e/ou senha inválido(s).')
-            alert("Usuário desconhecido")
+            alert("Email ou senha incorretos")
         }
 
     };
@@ -101,7 +99,7 @@ export default function Login() {
                                                 onChange={e => setEmail(e.target.value)}
                                                 required
                                             />
-                                            <label>usuário</label>
+                                            <label>email</label>
                                         </div>
                                         <div className="caixa-u">
                                             <input

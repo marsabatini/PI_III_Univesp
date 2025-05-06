@@ -30,6 +30,9 @@ export default function Cadastro_Geral() {
     const [bairro, setBairro] = useState('')
     const [cargo, setCargo] = useState('');
     const [tipoCadastro, setTipoCadastro] = useState('');
+    const [estado, setEstado] = useState('');
+    const [numero, setNumero] = useState('');
+    const [complemento, setComplemento] = useState('');
 
 
     //Montar função para dar um refresh nos dados
@@ -81,7 +84,7 @@ export default function Cadastro_Geral() {
             rg,
             cpf,
             endereco,
-            numEndereco,
+            numero,
             cidade,
             cep,
             cargo
@@ -445,14 +448,28 @@ export default function Cadastro_Geral() {
                                                 <div className={style_cadastros_gerais.input_sexo}>
                                                     <label for="iusuario_sexo">Sexo</label>
                                                     <input 
-                                                    type="text"  
+                                                    type="radio"  
                                                     name="sexo" 
                                                     id="iusuario_sexo"
                                                     title="Digite seu sexo"
-                                                    defaultValue={userData?.sexo || ''}
+                                                    value={"M"}
+                                                    //defaultValue={userData?.sexo || ''}
                                                     onChange={e=> setSexo(e.target.value)}
                                                     required
-                                                    />
+                                                    
+                                                    /><label className={style_cadastros_gerais.gender}>Masculino</label>
+
+                                                    <input 
+                                                    type="radio"  
+                                                    name="sexo" 
+                                                    id="iusuario_sexo"
+                                                    title="Digite seu sexo"
+                                                    value={"F"}
+                                                    // defaultValue={userData?.sexo || ''}
+                                                    onChange={e=> setSexo(e.target.value)}
+                                                    required
+                                                    
+                                                    /><label className={style_cadastros_gerais.gender}>Feminino</label>
                                                 </div>
                                             </div>
 
@@ -465,7 +482,7 @@ export default function Cadastro_Geral() {
                                                 name="endereco" 
                                                 id="iusuario_endereco"
                                                 title="Digite seu endereço"
-                                                defaultValue={userData?.endereco || ''}
+                                                defaultValue={userData?.endereco?.endereco || ''}
                                                 onChange={e=>setEndereco(e.target.value)}
                                                 required
                                                 />
@@ -478,7 +495,7 @@ export default function Cadastro_Geral() {
                                                 name="bairro" 
                                                 id="iusuario_bairro"
                                                 title="Digite seu bairro"
-                                                defaultValue={userData?.bairro || ''}
+                                                defaultValue={userData?.endereco?.bairro || ''}
                                                 onChange={e=>setBairro(e.target.value)}
                                                 required
                                                 />
@@ -495,7 +512,7 @@ export default function Cadastro_Geral() {
                                                     name="numero" 
                                                     id="iusuario_num"
                                                     title="Digite o número de seu endereço"
-                                                    defaultValue={userData?.numEndereco || ''}
+                                                    defaultValue={userData?.endereco?.numero || ''}
                                                     onChange={e=> setNumEndereco(e.target.value)}
                                                     required
                                                     />
@@ -508,7 +525,7 @@ export default function Cadastro_Geral() {
                                                     name="cidade" 
                                                     id="iusuario_cidade"
                                                     title="Digite sua cidade"
-                                                    defaultValue={userData?.cidade || ''}
+                                                    defaultValue={userData?.endereco?.cidade || ''}
                                                     onChange={e=> setCidade(e.target.value)}
                                                     required
                                                     />
@@ -521,7 +538,7 @@ export default function Cadastro_Geral() {
                                                     name="cep" 
                                                     id="iusuario_CEP"
                                                     title="Digite seu CEP"
-                                                    defaultValue={userData?.cep || ''}
+                                                    defaultValue={userData?.endereco?.cep || ''}
                                                     onChange={e=> setCep(e.target.value)}
                                                     required
                                                     />

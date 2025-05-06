@@ -73,12 +73,15 @@ body{
 .cadastro-card-form{
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.8rem;
 }
 
 
 .cadastro-card-form .form-item{
     position: relative;
+    display: flex;
+    justify-content: start;
+    gap: 20px;
 }
 
 .cadastro-card-form .form-item-icon{
@@ -87,6 +90,13 @@ body{
     left: 1.4rem;
     font-size: 1.3rem;
     opacity: .4;
+}
+
+.gender_icon {
+    position: absolute;
+    font-size: 1.3rem;
+    opacity: .4;
+    left: 1.4rem;
 }
 
 .cadastro-card-form .checkbox{
@@ -119,6 +129,32 @@ body{
     border-radius: 10px;
     width: 100%;
     transition: background .5s;
+}
+
+.form-item.gender{
+    border: none;
+    outline: none;
+    background: #FFF;
+    padding: 1rem 1.5rem;
+    padding-left: calc(1rem * 3.5);
+    border-radius: 10px;
+    width: 100%;
+    transition: background .5s;
+    height: 50px;
+}
+
+.form-item.gender label {
+    font-size: 14px;
+    color: var(--color-cinza-claro);
+}
+
+.erros {
+    position: absolute;
+    font-size: 13px;
+    color: var(--color-cinza-claro);
+    top: 3.20rem;
+    left: 1rem;
+    
 }
 
 .cadastro-card input:focus{
