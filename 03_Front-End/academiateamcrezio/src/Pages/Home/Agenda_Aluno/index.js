@@ -211,9 +211,9 @@ export default function Agenda_Aluno() {
                                     </div>
                                 </div>
 
-                                <div className="separador">
+                                {/* <div className="separador">
 
-                                </div>
+                                </div> */}
 
                                 <div className="consulta_modalidade_aluno">
                                     <div>

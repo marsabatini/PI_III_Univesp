@@ -13,6 +13,13 @@ body{
     justify-content: center;
 }
 
+.cadastro-card-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .cadastro-card{
     margin-top: 50px;
     width: 450px;

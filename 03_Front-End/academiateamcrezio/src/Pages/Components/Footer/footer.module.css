@@ -4,7 +4,7 @@
     width: 100%;
     background-color: #A21500;
     left: 0;
-    align-items: baseline;
+    align-items: center;
     padding: 10px;
     position: absolute;
     border-top: 2px #262729 solid ;
@@ -12,12 +12,12 @@
 }
 
 .logo_footer {
-
+    position: absolute;
     width: 80px;
     height: 80px;
     justify-content: center;
     align-self: center;
-    margin-left: 30px;
+    /* margin-bottom: 20px; */
 
 }
 
@@ -37,7 +37,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    padding-top: 40px;
+    padding-top: 20px;
     
 }
 
