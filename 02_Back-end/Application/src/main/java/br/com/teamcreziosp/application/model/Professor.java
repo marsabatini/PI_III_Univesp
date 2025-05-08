@@ -10,8 +10,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@DiscriminatorValue("professor")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@DiscriminatorValue("professor")  // define o tipo específico da entidade (subclasse)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")  // indica que ao serializar o objeto, o Jackson deve usar apenas o ID
 public class Professor extends Funcionario {
 
 }

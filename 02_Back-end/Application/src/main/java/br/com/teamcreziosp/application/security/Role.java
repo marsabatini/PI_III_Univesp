@@ -16,18 +16,13 @@ public enum Role {
     PROFESSOR(5, "ROLE_PROFESSOR"),
     TREINADOR(6, "ROLE_TREINADOR");
 
-
-//    PROFESSOR(3, )
-
     private Integer code;
     private String description;
-
 
     public static Role toEnum(Integer code) {
 
         if(Objects.isNull(code))
             return null;
-
 
         for(Role role : Role.values()) {
             if(code.equals(role.getCode()))

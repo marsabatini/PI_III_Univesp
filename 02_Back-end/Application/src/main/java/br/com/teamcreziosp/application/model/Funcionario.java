@@ -4,6 +4,7 @@ package br.com.teamcreziosp.application.model;
 import br.com.teamcreziosp.application.security.Role;
 import br.com.teamcreziosp.application.security.config.ValidPassword;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
@@ -26,10 +27,10 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")  // indica que ao serializar o objeto, o Jackson deve usar apenas o ID
 @Table(name = "Funcionario", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)  // define qual coluna identificará o tipo específico da entidade (subclasse)
 public class Funcionario implements UserDetails {
 
     @Id
@@ -57,8 +58,7 @@ public class Funcionario implements UserDetails {
     @NotBlank(message = "Campo obrigatório.")
     private String senha;
 
-    @NotBlank(message = "Campo obrigatório.")
-    private String sexo;
+    private Character sexo;
 
     @NotBlank(message = "Campo obrigatório.")
     private String telefone;
@@ -66,7 +66,7 @@ public class Funcionario implements UserDetails {
     @NotBlank(message = "Campo obrigatório.")
     private String rg;
 
-    @CPF(message = "CPF inválido.")
+    //@CPF(message = "CPF inválido.")
     @NotBlank(message = "Campo obrigatório.")
     private String cpf;
 
@@ -76,6 +76,7 @@ public class Funcionario implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;

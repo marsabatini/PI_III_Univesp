@@ -1,6 +1,5 @@
 package br.com.teamcreziosp.application.security.config;
 
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,13 +11,11 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration{
-
 
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
@@ -34,7 +31,7 @@ public class SecurityConfiguration{
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authHttpRequest -> authHttpRequest
                         .requestMatchers("/api/index",
-                                        "/api/cadastro",
+                                        "/api/cadastroaluno",
                                         "/api/login",
                                         "/api/aulaexperimental",
                                         "/api/aulaexperimental/consulta/query={email}",
@@ -46,18 +43,19 @@ public class SecurityConfiguration{
                                         "api/ping",
                                         "/adm/aulas/{id}",
                                         "/adm/aulas/adicionaraluno/{idAula}/{idAluno}",
+                                        "/adm/aulas/registrarpresenca/{idAluno}/{idAula}",
                                         "/adm/aulas/removeraluno/{idAula}/{idAluno}",
                                         "/adm/aulas/alunosinscritosnaaula/{idAula}",
                                         "/adm/aulas/aulasdoaluno/{idAluno}",
                                         "/api/funcionarios/{id}",
-                                        "/api/funcionarios"
+                                        "/api/funcionarios",
+                                        "/api/cadastrofuncionario"
                                         ) //===> REFATORAR: permitir apenas Roles EXPERIMENTAL
                                         .permitAll()
                         .requestMatchers("/api/agenda").hasAuthority("EXPERIMENTAL")
                         .requestMatchers("/api/aluno/agenda").hasAuthority("ALUNO")
                         .requestMatchers("/adm/alunos").hasAuthority("ADMIN")
-                        .requestMatchers("/api/cadastrofuncionario").hasAuthority("PROFESSOR")
-                        .requestMatchers("/api/cadastrofuncionario").hasAuthority("ADMIN")
+                        //.requestMatchers("/api/cadastrofuncionario").hasAnyAuthority("PROFESSOR","ADMIN")
                         )  //===> Endpoint funciona, mas acesso por hasRole não.
                         // COM hasAuthority() FUNCIONOU!
 

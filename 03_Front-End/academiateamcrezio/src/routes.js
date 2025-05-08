@@ -23,7 +23,8 @@ import Aluno from "./Pages/Home/Aluno";
 import MeuPlano from "./Pages/Home/Aluno/Meu_Plano";
 import Nossa_Historia from "./Pages/Home/Nossa_História";
 import Contato from "./Pages/Home/Contato";
-import Modalidades from "./Pages/Home/Modalidades"
+import Modalidades from "./Pages/Home/Modalidades";
+import Presenca from "./Pages/Home/Presenca";
 
 
 
@@ -57,6 +58,7 @@ export default function AppRoutes() {
                 <Route path="/agenda_aluno" element={<Agenda_Aluno/>} />
                 <Route path="/Adm/planosadm" element={<Planos_Adm/>} />
                 <Route path="/Adm/pef"  element={<Pef_adm/>} />
+                <Route path="/Presenca" element={<Presenca/>} />
 
                 {/* <Route path="/perfil" element={<Perfil/>} /> */}
             </Routes>

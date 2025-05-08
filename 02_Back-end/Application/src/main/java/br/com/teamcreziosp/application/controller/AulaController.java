@@ -7,13 +7,16 @@ import br.com.teamcreziosp.application.repository.AlunoRepository;
 import br.com.teamcreziosp.application.repository.AulaRepository;
 import br.com.teamcreziosp.application.repository.FuncionarioRepository;
 import br.com.teamcreziosp.application.responses.AulaResponse;
+import br.com.teamcreziosp.application.service.PresencaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/adm")
@@ -27,6 +30,9 @@ public class AulaController {
 
     @Autowired
     private AlunoRepository alunoRepository;
+
+    @Autowired
+    private PresencaService presencaService;
 
     @GetMapping("/aulas")
     public List<AulaResponse> findAll() {
@@ -78,8 +84,10 @@ public class AulaController {
 
     //adicionar restricao de quantidade de alunos
     @PostMapping("/aulas/adicionaraluno/{idAluno}/{idAula}")
-    public ResponseEntity<String> adicionarAluno(@PathVariable(value = "idAula") Integer idAula, @PathVariable(value = "idAluno") Integer idAluno) {
-
+    public ResponseEntity<String> adicionarAluno(
+            @PathVariable(value = "idAula") Integer idAula,
+            @PathVariable(value = "idAluno") Integer idAluno)
+    {
         Optional<Aula> buscarAula = aulaRepository.findById(idAula);
         if (buscarAula.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aula não encontrada.");
@@ -104,7 +112,10 @@ public class AulaController {
     }
     
     @DeleteMapping("/aulas/removeraluno/{idAluno}/{idAula}")
-    public ResponseEntity<String> removerAluno(@PathVariable(value = "idAula") Integer idAula, @PathVariable(value = "idAluno") Integer idAluno) {
+    public ResponseEntity<String> removerAluno(
+            @PathVariable(value = "idAula") Integer idAula,
+            @PathVariable(value = "idAluno") Integer idAluno)
+    {
         Optional<Aula> buscarAula = aulaRepository.findById(idAula);
         if (buscarAula.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aula não encontrada.");
@@ -173,4 +184,16 @@ public class AulaController {
         return ResponseEntity.status(HttpStatus.OK).body(aulasResponse);
     }
 
+    @PostMapping("/aulas/registrarpresenca/{idAluno}/{idAula}")
+    public ResponseEntity<String> registrarPresenca(
+            @PathVariable(value = "idAluno") Integer idAluno,
+            @PathVariable(value = "idAula") Integer idAula)
+    {
+        try {
+            presencaService.registrarPresenca(idAluno, idAula);
+            return ResponseEntity.ok("Presença confirmada com sucesso!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 }

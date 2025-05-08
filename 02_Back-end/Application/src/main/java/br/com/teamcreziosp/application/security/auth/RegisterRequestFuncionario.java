@@ -37,8 +37,8 @@ public class RegisterRequestFuncionario {
     @NotBlank(message = "Campo obrigatório.")
     private String senha;
 
-    @NotBlank(message = "Campo obrigatório.")
-    private String sexo;
+
+    private Character sexo;
 
     @NotBlank(message = "Campo obrigatório.")
     private String telefone;
@@ -53,8 +53,11 @@ public class RegisterRequestFuncionario {
     @NotBlank(message = "Campo Obrigatório.")
     private String cargo;
 
-//    private String endereco;
-//    private String bairro;
-//    private String cidade;
-//    private String numero;
+    private String endereco;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cidade;
+    private String estado;
+    private String cep;
 }
