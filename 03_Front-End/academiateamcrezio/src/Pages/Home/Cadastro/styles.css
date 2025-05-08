@@ -126,10 +126,15 @@ body{
     border-radius: 10px;
     width: 100%;
     transition: background .5s;
+    font-size: 1rem;
 }
 
 .cadastro-card input:focus{
     background: #DD6457;
+}
+
+.cadastro-card input:focus::placeholder{
+    color: #fff;
 }
 
 .cadastro-card input[type="checkbox"]{

@@ -9,14 +9,21 @@
 }
 
 .pef_section {
-    height: 103vh;
+    height: auto;
+    margin-bottom: 50px;
 }
 
+.tela_pef {
+    width: 80%;
+    padding: 0px;
+}
+/* 
 .pef {
     margin-top: -32px;
-}
+} */
 .pef_caixa {
     display: flex;
+    justify-content: center;
     margin-top: 35px;
 }
 
@@ -44,7 +51,7 @@
 .titulo_pef  {
     background-color: #A21500;
     height: 50px;
-    width: 1600px;
+    /* width: 1600px; */
     color:white;
     justify-content: center;
     align-items: center;

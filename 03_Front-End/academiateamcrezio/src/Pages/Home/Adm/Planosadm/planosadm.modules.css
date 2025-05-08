@@ -9,7 +9,7 @@
 }
 
 .planosadm_section {
-    height: 103vh
+    height: auto;
 }
 
 .input_b {
@@ -27,6 +27,7 @@
 
 .caixa_planosadm {
     display: flex;
+    justify-content: center;
     margin-top: 35px;
 }
 
@@ -40,7 +41,7 @@
 .titulo {
     background-color: #A21500;
     height: 50px;
-    width: 1600px;
+    /* width: 1600px; */
     color:white;
     justify-content: center;
     align-items: center;
@@ -61,8 +62,9 @@ footer {
 }
 
 .tela_adm_plamos {
-    width: 1600px;
+    width: 80%;
     padding: 0;
+    margin-bottom: 200px;
 }
 
 .criar_plano {

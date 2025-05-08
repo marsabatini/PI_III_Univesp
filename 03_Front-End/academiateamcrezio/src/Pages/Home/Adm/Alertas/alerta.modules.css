@@ -143,7 +143,7 @@ body {
 .titulo_alerta{
     background-color: #A21500;
     height: 50px;
-    width: 1600px;
+    width: 100%;
     color:white;
     justify-content: center;
     align-items: center;
@@ -157,7 +157,7 @@ body {
 }
 
 .alert_section {
-    width: 1600px;
+    width: 80%;
     padding: 0;
 }
 
@@ -171,7 +171,7 @@ body {
 
 
 .graduacao {
-    width: 675px;
+    width: 575px;
     height: 325px;
     justify-content: center;
     margin-block-start: 25px;
@@ -202,7 +202,7 @@ body {
 
 
 .avaliacao_fisica {
-    width: 675px;
+    width: 575px;
     height: 325px;
     justify-content: center;
     margin-block-start: 25px;
@@ -232,7 +232,7 @@ body {
 
 
 .exame_medico {
-    width: 675px;
+    width: 575px;
     height: 325px;
     justify-content: center;
     margin-block-start: 25px;
@@ -262,7 +262,7 @@ body {
 
 
 .mensalidade {
-    width: 675px;
+    width: 575px;
     height: 325px;
     justify-content: center;
     margin-block-start: 25px;

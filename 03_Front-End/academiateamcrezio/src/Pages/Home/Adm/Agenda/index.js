@@ -220,9 +220,9 @@ export default function Agenda() {
                                     </div>
                                 </div>
 
-                                <div className="separador">
+                                {/* <div className="separador">
 
-                                </div>
+                                </div> */}
 
                                 <div className="consulta_modalidade">
                                     <div>
@@ -258,7 +258,7 @@ export default function Agenda() {
                                     </h2>
 
                                     <div className="Agenda_Publica">
-                                        <div>
+                                        <div style={{width: "100%"}}>
                                             <ul className="header_agenda_adm">
                                                 <li>Data</li>
                                                 <li>Horario</li>

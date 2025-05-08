@@ -134,9 +134,9 @@ body {
 .caixa_avisos {
     height: auto;
     width: auto;
+    display: flex;
     justify-content: center;
     align-self: center;
-    display: flex;
     margin: 10px;
     
 }
@@ -206,19 +206,19 @@ body {
 }
 
 .warning_section {
-    width: 1600px;
+    width: 80%;
     padding: 0;
 }
 
 .quadro_avisos {
     height: 600px;
-    width: 1400px;
+    width: 100%;
     background-color: #d1d1d1;
     border: #3d3e40;
-    margin-block-start: 25px;
+    /* margin-block-start: 25px;
     margin-inline-start: 35px;
     margin-inline-end: 150px;
-    margin-block-end: 30px;
+    margin-block-end: 30px; */
     padding: 15px 20px;
     overflow-y: auto;
 }
@@ -243,7 +243,7 @@ body {
 .titulo_avisos{
     background-color: #A21500;
     height: 50px;
-    width: 1600px;
+    width: 100%;
     color:white;
     justify-content: center;
     align-items: center;

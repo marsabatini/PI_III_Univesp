@@ -40,7 +40,7 @@ export default function Pef () {
                                                 <img src={fotoperfil} alt="foto do perfil"/>
                                             <div className="pef_3">
                                                 <div>
-                                                <label for="nome">nome</label>
+                                                <label for="nome">nome:</label>
                                                 <input type="text" id="nome"/>
                                                 </div>
 
