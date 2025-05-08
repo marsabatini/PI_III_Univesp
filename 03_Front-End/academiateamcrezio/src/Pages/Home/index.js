@@ -67,25 +67,19 @@ export default function Inicio() {
     return (
 
         <div>
-            <container>
-
+            <div>
                 <Header />
                 <main>
-
                     <article className="conteudo">
-
-
                         <section className="quadro_imagem_inicial">
-
                             <picture>
                                 <source media="(max-width:780px)" srcSet={foto_inicial_responsiva}></source>
                                 <img src={foto_inicial} className="boas-vindas" />
                             </picture>
-
                         </section>
 
                         <section className="aula_experimental_home">
-                            <Link to="/aula_experimental"> <button > marque agora uma aula  <br /> aula experimental</button></Link>
+                            <Link to="/aula_experimental"> <button > marque agora uma <br /> aula experimental</button></Link>
                         </section>
 
                         <section>
@@ -94,7 +88,6 @@ export default function Inicio() {
                             </div>
 
                             <div className="planos">
-
                                 <div className="imgPlanos">
                                     <img src={white_belt} alt="plano white belt" />
                                     <img src={blue_belt} alt="plano blue belt" />
@@ -105,9 +98,7 @@ export default function Inicio() {
                                     <img src={single_plus} alt="plano single plus" />
                                     <img src={triple} alt="plano triple" />
                                     <img src={triple_plus} alt="plano triple plus" />
-
                                 </div>
-
                             </div>
                         </section>
 
@@ -155,7 +146,6 @@ export default function Inicio() {
                             </div>
                         </section>
 
-
                         <span className="tabela">agenda semanal</span>
                         <div className="agenda-Semanal">
                             <img src={tabela_horarios} alt="tabela do horario das aulas" />
@@ -193,10 +183,10 @@ export default function Inicio() {
                                         {/* <img src={item_mural_4} className="m04" alt="img04" /> */}
                                     </div>
                                     <div className="dots-2">
-                                        <label for="img01"></label>
-                                        <label for="img02"></label>
-                                        <label for="img03"></label>
-                                        {/* <label for="img04"></label> */}
+                                        <label htmlFor="img01"></label>
+                                        <label htmlFor="img02"></label>
+                                        <label htmlFor="img03"></label>
+                                        {/* <label htmlFor="img04"></label> */}
                                     </div>
                                 </div>
                             </div>
@@ -209,13 +199,7 @@ export default function Inicio() {
                     </article>
                 </main>
                 <Footer />
-
-
-
-
-            </container>
+            </div>
         </div>
-
     );
-
 }

@@ -121,7 +121,7 @@ export default function Header() {
 
         <>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
-            <header class={header_style.header}>
+            <header className={header_style.header}>
 
                 <div className={header_style.img_logo}>
                     <Link to="/home"> <img src={logo_header} alt="logotipo" ></img> </Link>
@@ -129,7 +129,7 @@ export default function Header() {
 
                 <div id="hidden_menu" >
 
-                    <i onClick={OpenMenu} class="bi bi-list" id="list_icon"></i>
+                    <i onClick={OpenMenu} className="bi bi-list" id="list_icon"></i>
 
                     <ul id="hidden_links" className={header_style.hide}>
                         <li> < Link to="/modalidades">Modalidades </Link></li>

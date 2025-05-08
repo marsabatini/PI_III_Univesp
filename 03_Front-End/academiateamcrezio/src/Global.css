@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 *{
@@ -7,6 +8,15 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+    
+    font-family: "Nunito Sans", "Bebas Neue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100,
+        "YTLC" 500;
+    /* line-height: 1.7; */
 }
 
 
@@ -45,11 +55,11 @@
     
 }
 
-
+#root {
+    width: 100%;
+}
 
 body{
-    font-family: "Bebas Neue", sans-serif;
-    line-height: 1.7;
     color: var(--color-cinza-escuro);
     background: var(--color-fundo-claro);
     width: 100%;

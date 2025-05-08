@@ -202,7 +202,7 @@ body {
 .titulo_mural{
     background-color: #A21500;
     height: 50px;
-    width: 1600px;
+    /* width: 1600px; */
     color:white;
     justify-content: center;
     align-items: center;

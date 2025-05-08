@@ -127,18 +127,15 @@ body {
 .caixa_agenda {
     height: auto;
     width: auto;
+    display: flex;
     justify-content: center;
     align-self: center;
-    display: flex;
     margin: 10px;
-    
 }
 
 .imagens:hover {
     cursor: pointer;
 }
-
-
 
 .menu_gerenciador { 
     margin-block-start: 10px;
@@ -148,12 +145,10 @@ body {
 }
 
 .conteudo_gerenciado {
-    width: 1600px;
+    width: 75%;
     padding: 0;
     margin: 0;
 }
-
-
 
 .gerenciador{
     display: block;
@@ -211,7 +206,7 @@ body {
 .titulo_agenda{
     background-color: #A21500;
     height: 50px;
-    width: 1600px;
+    /* width: 1600px; */
     color:white;
     justify-content: center;
     align-items: center;
@@ -241,7 +236,7 @@ body {
 .consulta_modalidade {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 520px;
     height: 550px;
     align-items: center;
     margin-bottom: 20px;
@@ -340,7 +335,7 @@ body {
 
 .calendar .weeks{
     color: #777777;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .calendar .weeks li{
@@ -461,7 +456,7 @@ body {
     height: 400px;
     overflow-y:auto;
     border: 2px solid black;
-    width: 1150px;
+    width: 100%;
 }
 
 
@@ -477,6 +472,9 @@ body {
     
 }
 
+.Agendamento {
+    width: 100%;
+}
 
 .atributo_aula:hover{
     background: #777777;
@@ -523,9 +521,12 @@ body {
 .alter_modalidade {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+    justify-items: center;
     text-align: center;
-    margin-bottom: 50px;
+    margin: 20px 0 50px 5px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .alter_modalidade input, select{
@@ -832,21 +833,35 @@ body {
     cursor: pointer;
 }
 
-.inserir_nova_aula div {
-
+.inserir_nova_aula {
     display: flex;
     margin: 15px;
-    margin-left: auto;
+    /* margin-left: auto; */
     width: 100%;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.inserir_nova_aula > div {
+    display: flex;
+    margin: 15px;
+    /* margin-left: auto; */
+    width: 350px;
     align-items: center;
     justify-content: center;
-    
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.inserir_nova_aula > div > div{
+    width: 350px;
 }
 
 .inserir_nova_aula input, .inserir_nova_aula select{
 
     width: 300px;
-    margin-left: 30px;
+    /* margin-left: 30px; */
     border-radius: 10px;
     font-size: 20px;
     padding: 10px;

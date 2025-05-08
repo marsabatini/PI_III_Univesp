@@ -13,6 +13,13 @@ body{
     justify-content: center;
 }
 
+.cadastro-card-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .cadastro-card{
     margin-top: 50px;
     width: 450px;
@@ -129,6 +136,7 @@ body{
     border-radius: 10px;
     width: 100%;
     transition: background .5s;
+    font-size: 1rem;
 }
 
 .form-item.gender{
@@ -159,6 +167,10 @@ body{
 
 .cadastro-card input:focus{
     background: #DD6457;
+}
+
+.cadastro-card input:focus::placeholder{
+    color: #fff;
 }
 
 .cadastro-card input[type="checkbox"]{

@@ -82,15 +82,15 @@ export default function Login() {
                                 <div className="cadastro">
                                     <div className="flexz">
                                         <img src={logo} alt="logo team crezio" />
-                                        <p> caso não seja cadastrado ainda, crie sua conta!</p>
+                                        <p> Caso não seja cadastrado ainda, crie sua conta!</p>
                                         <Link to="/cadastro">
-                                            <button className="c-bnt">cadastrar</button>
+                                            <button className="c-bnt">Cadastrar</button>
                                         </Link>
                                     </div>
                                 </div>
                                 <div className="login-column">
                                     <form className="login" onSubmit={Login}>
-                                        <h2>entre em seu cadastro </h2>
+                                        <h2>Entre em seu cadastro </h2>
                                         <div className="caixa-u">
                                             <input
                                                 title="Digite seu e-mail."
@@ -99,7 +99,7 @@ export default function Login() {
                                                 onChange={e => setEmail(e.target.value)}
                                                 required
                                             />
-                                            <label>email</label>
+                                            <label>Email</label>
                                         </div>
                                         <div className="caixa-u">
                                             <input
@@ -109,13 +109,13 @@ export default function Login() {
                                                 onChange={e => setSenha(e.target.value)}
                                                 required
                                             />
-                                            <label>senha</label>
+                                            <label>Senha</label>
                                         </div>
                                         <div className="esquecerSenha">
-                                            <Link className="esqueceu" to="/login/Redefinir_Senha"> esqueci a senha </Link>
+                                            <Link className="esqueceu" to="/login/Redefinir_Senha"> Esqueci a senha </Link>
                                         </div>
                                         <div className="div_entrar_button">
-                                            <button type="submit" className="l-bnt">entrar</button>
+                                            <button type="submit" className="l-bnt">Entrar</button>
                                         </div>
                                     </form>
                                 </div>

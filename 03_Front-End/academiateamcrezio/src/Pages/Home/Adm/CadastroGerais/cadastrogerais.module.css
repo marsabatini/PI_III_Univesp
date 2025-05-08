@@ -1,21 +1,19 @@
 
 
 .caixa_cadastro_professor {
-
     height: auto;
     width: auto;
+    display: flex;
     justify-content: center;
     align-self: center;
-    display: flex;
     margin: 10px;
-
 }
 
 .titulo_cadastro_professor {
 
     background-color: #A21500;
     height: 50px;
-    width: 1600px;
+    /* width: 1600px; */
     color:white;
     justify-content: center;
     align-items: center;
@@ -30,7 +28,7 @@
 
 .cadastros_section {
 
-    width: 1600px;
+    width: auto;
     padding: 0;
 
 }
@@ -126,7 +124,7 @@
 
 .quadro_dados_cadastrais {
 
-    width: auto;
+    width: 80vw;
     height: 700px;
     margin: 20px 15px 20px 15px;
     box-shadow: inset 0.1px 3px 3px 3px #acacac;
@@ -136,30 +134,24 @@
 
 
 .tipo_cadastro {
-
     display: flex;
     width: auto;
     height: 50px;
     margin: 0px 20px 0 20px;
     align-items: center;
     justify-content: space-between;
-    
 }
 
 .tipo_cadastro input[type=radio] {
-
     width: 20px;
     height: 20px;
-    
 }
 
 .tipo_cadastro label {
-
     width: auto;
     height: 50px;
-    font-size: 30px;
+    font-size: 20px;
     margin-left: 10px;
-    
 }
 
 .dados_cadastrais{
@@ -184,11 +176,9 @@
 }
 
 .dados_cadastrais label {
-
-    font-size: 25px;
+    font-size: 20px;
     width: auto;
     height: 40px;
-
 }
 
 .input_nome, .input_sobrenome, .input_RG,
@@ -200,6 +190,16 @@
 
     display: flex;
     margin-bottom: 15px;
+}
+
+.input_RG,
+.input_CPF, .input_data_nasc {
+    width: 345px;
+}
+
+.input_num,
+.input_cidade, .input_CEP, .input_senha {
+    width: 305px;
 }
 
 .input_nome input, .input_sobrenome input, .input_RG input,
@@ -306,20 +306,20 @@
 
 .input_num input {
 
-    width: 200px;
+    width: 100px;
     margin-left: 2.65em;
 
 }
 
 .input_cidade input{
 
-    width: 200px;
+    width: 150px;
     margin-left: 1em;
 }
 
 .input_cidade label{
 
-    margin-left: 2em;
+    margin-left: 1em;
 
 }
 
@@ -331,20 +331,20 @@
 
 .input_CEP label {
 
-    margin-left: 2em;
+    margin-left: 1em;
 
 }
 
 
 .input_reponsavel input{
 
-    width: 400px;
+    width: 200px;
     margin-left: 0.5em;
 }
 
 .input_tel_responsavel input {
 
-    width: 200px;
+    width: 250px;
     margin-left: 1em;
 }
 
@@ -356,26 +356,26 @@
 .input_senha input{
 
     margin-left: 1em;
-    width: 250px;
+    width: 200px;
 
 }
 
 .input_senha label {
 
-    margin-left: 10em;
+    margin-left: 1em;
 }
 
 .input_conf_senha input {
 
     margin-left: 1em;
-    width: 250px;
+    width: 200px;
 
 }
 
 
 .input_conf_senha label {
 
-    margin-left: 6.4em;
+    margin-left: 1em;
 
 }
 
@@ -395,7 +395,7 @@
 
 .tipo_cadastro_options button {
 
-    width: 200px;
+    width: 180px;
     height: 50px;
     padding: 10px;
     line-height: 1;
