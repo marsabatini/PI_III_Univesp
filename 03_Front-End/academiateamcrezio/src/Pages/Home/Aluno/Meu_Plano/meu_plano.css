@@ -3,11 +3,12 @@
 
 .fundoTela {
     background-color: #222121;
-    width: 1730px;
-    height: 560px;
+    max-width: 1730px;
+    max-height: 760px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-top: 160px;
 }
 
 .tituloMeuPlano{

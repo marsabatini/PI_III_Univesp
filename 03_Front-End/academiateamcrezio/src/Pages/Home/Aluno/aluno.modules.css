@@ -33,9 +33,9 @@ body {
 }
 
 .section_perfil_aluno {
-
-    width: 1600px;
-    padding: 6rem 0;
+    margin: 0 auto;
+    max-width: 1600px;
+    padding: 6rem 30px;
 }
 
 .foto-p {
