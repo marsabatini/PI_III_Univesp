@@ -1,62 +1,109 @@
-.sec_bnt {
+/* Título principal */
+.main_bnt h1 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Bloco de presença */
+  .presencablocos {
+    background-color: #f1f5f9;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin: 15px;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 350px;
-    padding: 10px;
-    gap: 50px
-}
+  }
+  
+  /* Título da aula */
+  .presencablocos h3 {
+    font-size: 1.4rem;
+    color: #1e293b;
+    margin-bottom: 10px;
+  }
+  
+  /* Linhas de informação */
+  .presencablocos span {
+    display: flex;
+    padding: 5px 0;
+    color: #334155;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
 
-.presenca_bnt {
-    width: 185px;
-    height: 185px;
-    border-radius: 100%;
-    font-size: 25px;
+  .confirmar-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #A21500; 
     color: white;
-    background-color: #A21500;
-    border: groove 2px linear-gradient(to right,#DD6460 #DD6457);
-    transition: border 0.8s ease-in-out; 
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirmar-btn:hover {
+    background-color: #C62810
+  }
+  
+  .presencablocos span:last-child {
+    border-bottom: none;
+  }
+  
+.tabela_aulas {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    margin: -120px 0 ;
 }
 
-.presenca_bnt:hover {
-    background-color: #DD6460;
-}
-
-.msg_bnt {
-    font-size: 20px;
-    color: black;
-}
-
-.main_bnt {
-    margin-top: -100px;
+.aulablocos {
+  background-color: #f1f5f9;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin: 15px;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-@media (max-width: 780px) {
-    .main_bnt h1 {
-        font-size: 20px;
-        margin-top: -70px;
-        margin-bottom: -100px;
-    }
+.aulablocos span {
+  display: flex;
+  padding: 5px 30px;
+  color: #334155;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
 
+.aulablocos h3 {
+  font-size: 1.4rem;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+
+
+  /* Responsivo */
+  @media (max-width: 600px) {
     .main_bnt {
-        width: 350px;
+      padding: 15px;
     }
-    
-    .presenca_bnt {
-        margin-top: -90px;
-        width: 120px;
-        height: 100px;
-        border-radius: 5%;
-        font-size: 14px;
-        color: white;
-        background-color: #A21500;
-        border: groove 2px linear-gradient(to right,#DD6460 #DD6457);
-        transition: border 0.8s ease-in-out; 
-        cursor: pointer;
+  
+    .main_bnt h1 {
+      font-size: 1.3rem;
     }
 
-}
+    .tabela_aulas {
+      flex-direction: column;
+      margin-bottom: 0;
+    }
+
+    .espaco {
+      display: none
+    }
+  }
