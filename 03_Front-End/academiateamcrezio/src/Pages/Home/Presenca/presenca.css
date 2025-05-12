@@ -1,4 +1,4 @@
-/* Título principal */
+
 .main_bnt h1 {
     font-size: 1.6rem;
     margin-bottom: 20px;
@@ -6,7 +6,7 @@
     text-align: center;
   }
   
-  /* Bloco de presença */
+ 
   .presencablocos {
     background-color: #f1f5f9;
     padding: 15px;
@@ -18,14 +18,14 @@
     flex-direction: column;
   }
   
-  /* Título da aula */
+  
   .presencablocos h3 {
     font-size: 1.4rem;
     color: #1e293b;
     margin-bottom: 10px;
   }
   
-  /* Linhas de informação */
+  
   .presencablocos span {
     display: flex;
     padding: 5px 0;
@@ -88,7 +88,7 @@
 
 
 
-  /* Responsivo */
+  
   @media (max-width: 600px) {
     .main_bnt {
       padding: 15px;
