@@ -4,7 +4,7 @@ import br.com.teamcreziosp.application.model.*;
 import br.com.teamcreziosp.application.repository.AlunoExperimentalRepository;
 import br.com.teamcreziosp.application.repository.AlunoRepository;
 import br.com.teamcreziosp.application.repository.FuncionarioRepository;
-import br.com.teamcreziosp.application.security.Role;
+import br.com.teamcreziosp.application.enums.Role;
 import br.com.teamcreziosp.application.security.config.JwtService;
 import br.com.teamcreziosp.application.service.exceptions.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +33,7 @@ public class AuthenticationService implements UserDetails {
 
 
     // EXPLICAÇÃO: Este método realizar o cadastro dos alunos.
-    public AuthenticationResponse cadastroAluno(RegisterRequestAluno request){
+    public AuthenticationResponse cadastroAluno(RegisterRequestAluno request) {
 
         var endereco = Endereco.builder()
                 .endereco(request.getEndereco())

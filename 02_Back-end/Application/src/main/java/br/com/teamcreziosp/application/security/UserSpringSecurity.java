@@ -1,5 +1,6 @@
 package br.com.teamcreziosp.application.security;
 
+import br.com.teamcreziosp.application.enums.Role;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;

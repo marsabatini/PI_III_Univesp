@@ -1,4 +1,4 @@
-package br.com.teamcreziosp.application.security;
+package br.com.teamcreziosp.application.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

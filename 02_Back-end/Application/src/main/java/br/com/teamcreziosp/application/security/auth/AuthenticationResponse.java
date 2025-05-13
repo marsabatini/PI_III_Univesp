@@ -1,6 +1,6 @@
 package br.com.teamcreziosp.application.security.auth;
 
-import br.com.teamcreziosp.application.security.Role;
+import br.com.teamcreziosp.application.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

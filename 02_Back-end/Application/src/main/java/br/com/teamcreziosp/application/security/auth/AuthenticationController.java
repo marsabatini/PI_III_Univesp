@@ -32,7 +32,6 @@ public class AuthenticationController {
 
     @PostMapping("/cadastroaluno")
     public ResponseEntity<AuthenticationResponse> cadastroAluno(@Valid @RequestBody RegisterRequestAluno request){
-
         return ResponseEntity.ok(service.cadastroAluno(request));
     }
 
@@ -44,13 +43,11 @@ public class AuthenticationController {
 
     @PostMapping("/cadastrofuncionario")
     public ResponseEntity<AuthenticationResponse> cadastroFuncionario(@Valid @RequestBody RegisterRequestFuncionario request){
-
         return ResponseEntity.ok(service.cadastroFuncionario(request));
     }
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@Valid @RequestBody AuthenticationRequest request){
-
         return ResponseEntity.ok(service.login(request));
     }
 

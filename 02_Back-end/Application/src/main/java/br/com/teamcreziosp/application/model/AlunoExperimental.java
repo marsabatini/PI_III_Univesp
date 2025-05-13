@@ -1,19 +1,14 @@
 package br.com.teamcreziosp.application.model;
 
 
-import br.com.teamcreziosp.application.security.Role;
-import br.com.teamcreziosp.application.security.config.ValidPassword;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import br.com.teamcreziosp.application.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Collection;
 import java.util.List;
 

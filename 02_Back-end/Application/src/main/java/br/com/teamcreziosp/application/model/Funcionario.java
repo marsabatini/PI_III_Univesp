@@ -1,7 +1,7 @@
 package br.com.teamcreziosp.application.model;
 
 
-import br.com.teamcreziosp.application.security.Role;
+import br.com.teamcreziosp.application.enums.Role;
 import br.com.teamcreziosp.application.security.config.ValidPassword;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
