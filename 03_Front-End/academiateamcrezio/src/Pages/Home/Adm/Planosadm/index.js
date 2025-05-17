@@ -206,8 +206,8 @@ export default function Planosadm () {
                                                     </div>
                                             </form>
                                         </div>
-                                    </section>
                                 <Footer_Adm/>    
+                                    </section>
                          </div>
                         </section>
                     </div>

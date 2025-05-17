@@ -63,13 +63,12 @@ export function Log_in_out_header() {
 }
 
 
-let conexaoPerdida = false; // variável de controle fora da função
+let conexaoPerdida = false;
 
 const verifyLog = async () => {
   try {
-    await api.get('http://localhost:8080/api/ping');
+    await api.get('api/ping');
     
-    // Se reconectar, zera a flag
     if (conexaoPerdida) {
       console.log('Reconectado ao servidor.');
       conexaoPerdida = false;
@@ -79,7 +78,7 @@ const verifyLog = async () => {
     const logado = localStorage.getItem('usuarioLogado') === 'true';
 
     if (logado && !conexaoPerdida) {
-      conexaoPerdida = true; // evita que redirecione várias vezes
+      conexaoPerdida = true;
       localStorage.removeItem('usuarioLogado');
       localStorage.removeItem('userData');
       alert('Conexão perdida...');

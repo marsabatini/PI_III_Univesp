@@ -29,6 +29,7 @@ function Gerenciador_ADM() {
                             <Link to="/Adm/mural">          <li>Mural                    </li></Link> 
                             <Link >                         <li>Loja Física              </li></Link> 
                             <Link to="/Adm/pef">            <li>Professores e Treinadores</li></Link> 
+                            <Link to="/Adm/dashboard">            <li>Dashboard</li></Link> 
                         </ul>
                     </div>
                 </div>

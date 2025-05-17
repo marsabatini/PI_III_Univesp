@@ -10,6 +10,7 @@
 
 .planosadm_section {
     height: auto;
+    padding-top: 6rem;
 }
 
 .input_b {
@@ -28,13 +29,14 @@
 .caixa_planosadm {
     display: flex;
     justify-content: center;
-    margin-top: 35px;
+    margin: 10px;
 }
 
 .manilhas {
     display: flex;
     padding: 20px;
     justify-content: space-around;
+    ;
 }
 
 
@@ -53,18 +55,11 @@
     margin-block-start: 10px;
 }
 
-footer {
-    display: flex;
-    width: 100%;
-    background-color:#A21500;
-    bottom: 0;
-    
-}
 
 .tela_adm_plamos {
-    width: 80%;
     padding: 0;
-    margin-bottom: 200px;
+    width: 100%;
+    
 }
 
 .criar_plano {

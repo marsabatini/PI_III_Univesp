@@ -206,7 +206,6 @@ body {
 }
 
 .warning_section {
-    width: 80%;
     padding: 0;
 }
 
@@ -215,12 +214,9 @@ body {
     width: 100%;
     background-color: #d1d1d1;
     border: #3d3e40;
-    /* margin-block-start: 25px;
-    margin-inline-start: 35px;
-    margin-inline-end: 150px;
-    margin-block-end: 30px; */
-    padding: 15px 20px;
+    margin: 15px;
     overflow-y: auto;
+    border-radius: 15px;
 }
 
 .quadro_avisos li{

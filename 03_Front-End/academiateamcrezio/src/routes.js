@@ -25,6 +25,7 @@ import Nossa_Historia from "./Pages/Home/Nossa_História";
 import Contato from "./Pages/Home/Contato";
 import Modalidades from "./Pages/Home/Modalidades";
 import Presenca from "./Pages/Home/Presenca";
+import Dashboard from "./Pages/Home/Adm/Dashboard";
 
 
 
@@ -59,6 +60,7 @@ export default function AppRoutes() {
                 <Route path="/Adm/planosadm" element={<Planos_Adm/>} />
                 <Route path="/Adm/pef"  element={<Pef_adm/>} />
                 <Route path="/Presenca" element={<Presenca/>} />
+                <Route path="/Adm/dashboard" element={<Dashboard/>}></Route>
 
                 {/* <Route path="/perfil" element={<Perfil/>} /> */}
             </Routes>

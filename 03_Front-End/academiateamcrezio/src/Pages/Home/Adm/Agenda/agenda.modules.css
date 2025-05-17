@@ -145,7 +145,6 @@ body {
 }
 
 .conteudo_gerenciado {
-    width: 75%;
     padding: 0;
     margin: 0;
 }
@@ -474,6 +473,9 @@ body {
 
 .Agendamento {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .atributo_aula:hover{

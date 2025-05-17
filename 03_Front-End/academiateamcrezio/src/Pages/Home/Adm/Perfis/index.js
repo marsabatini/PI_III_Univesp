@@ -186,8 +186,8 @@ export default function Cadastros() {
 
 
                             </div>
-                            <Footer_Adm/>
                         </section>
+                            <Footer_Adm/>
                     </div>  
                     <script src="Tela_Perfil_Gerencia.js"></script>
                   

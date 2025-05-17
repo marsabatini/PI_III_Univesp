@@ -28,7 +28,7 @@
 
 .cadastros_section {
 
-    width: auto;
+    width: 100%;
     padding: 0;
 
 }
@@ -437,8 +437,6 @@
 
 
 .cadastros_gerais_section {
-
-    width: 100%;
     padding: 6rem 0;
 
 }
