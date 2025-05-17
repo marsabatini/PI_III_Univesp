@@ -1,20 +1,51 @@
 import { dividerClasses } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
+import api from "../../../Services/Api"
 
 import "./presenca.css";
 import Footer from "../../Components/Footer";
 import Header from "../../Components/Header";
 
 
-
 export default function Presenca() {
 
     const [presencaConfirmada, setPresencaConfirmada] = useState(false);
+    const [aulasMarcadas, setAulasMarcadas] = useState({})
 
-    const confirmarPresenca = () => {
-        setPresencaConfirmada(true);
-    };
+    async function confirmarpresenca(aulaid) {
+        const idAluno = JSON.parse(localStorage.getItem('id'));
+
+
+        try {
+            await api.post(`/adm/aulas/registrarpresenca/${idAluno}/${aulaid}`)
+            alert('presença confirmada')
+        } catch (error) {
+            alert('não conseguiu confirmar')
+        }
+    }
+
+
+    async function carregarAulasAluno() {
+        const idAluno = JSON.parse(localStorage.getItem('id'));
+
+
+        try {
+            const response = await api.get(`adm/aulas/aulasdoaluno/${idAluno}`);
+            setAulasMarcadas(response.data);
+
+
+        } catch (err) {
+
+        }
+
+    }
+
+    useEffect(() => {
+        carregarAulasAluno();
+    }, [])
+
+
 
     return (
         <div>
@@ -28,83 +59,31 @@ export default function Presenca() {
                             </h1>
                         </section>
 
-                        <section className="tabela_aulas">
+                        <section className="tabela_aulas" >
+                            {
 
-                            <div className="presencablocos">
-                                <h3>
-                                    boxe
-                                </h3>
-                                <span id="data_aula">
-                                    20/04/25
+                                aulasMarcadas.length > 0 ? (
+                                    aulasMarcadas.map(aula => (
+                                        <div id={aula.id} key={aula.id} className="presencablocos">
+                                            <h3>
+                                                {aula.modalidade}
+                                            </h3>
+                                            <span id="data_aula">
+                                                {aula.dataHora}
+                                            </span>
 
-                                </span>
-                                <span id="horario_aula">
-                                    20:00
-                                </span>
-                                <span id="dia_aula">
-                                    quarta-feira
-                                </span>
-                                <button className="confirmar-btn" >
-                                    Confirmar Presença
-                                </button>
-                            </div>
+                                            <button onClick={() => confirmarpresenca(aula.id)} className="confirmar-btn">
+                                                Confirmar Presença
+                                            </button>
+                                        </div>
+                                    ))
 
-                            <div className="presencablocos">
-                                <h3>
-                                    boxe
-                                </h3>
-                                <span id="data_aula">
-                                    20/04/25
+                                ) : (
+                                    <p>nenhuma aula marcada</p>
+                                )
 
-                                </span>
-                                <span id="horario_aula">
-                                    20:00
-                                </span>
-                                <span id="dia_aula">
-                                    quarta-feira
-                                </span>
-                                <button class="confirmar-btn" >
-                                    Confirmar Presença
-                                </button>
-                            </div>
+                            }
 
-                            <div className="presencablocos">
-                                <h3>
-                                    boxe
-                                </h3>
-                                <span id="data_aula">
-                                    20/04/25
-
-                                </span>
-                                <span id="horario_aula">
-                                    20:00
-                                </span>
-                                <span id="dia_aula">
-                                    quarta-feira
-                                </span>
-                                <button class="confirmar-btn">
-                                    Confirmar Presença
-                                </button>
-                            </div>
-
-                            <div className="presencablocos">
-                                <h3>
-                                    boxe
-                                </h3>
-                                <span id="data_aula">
-                                    20/04/25
-
-                                </span>
-                                <span id="horario_aula">
-                                    20:00
-                                </span>
-                                <span id="dia_aula">
-                                    quarta-feira
-                                </span>
-                                <button class="confirmar-btn" >
-                                    Confirmar Presença
-                                </button>
-                            </div>                           
                         </section>
 
                         <section>
@@ -112,85 +91,6 @@ export default function Presenca() {
                                 veja suas proximas aulas
                             </h1>
                         </section>
-                        <section className="tabela_aulas ">
-                        
-                        <div className="aulablocos">
-                                <h3>
-                                    boxe
-                                </h3>
-                                <span id="data_aula">
-                                    20/04/25
-                                </span>
-                                <span id="horario_aula">
-                                    20:00
-                                </span>
-                                <span id="dia_aula">
-                                    quarta-feira
-                                </span>
-                        </div>
-
-                        <div className="aulablocos">
-                                <h3>
-                                    boxe
-                                </h3>
-                                <span id="data_aula">
-                                    20/04/25
-                                </span>
-                                <span id="horario_aula">
-                                    20:00
-                                </span>
-                                <span id="dia_aula">
-                                    quarta-feira
-                                </span>
-                        </div>
-
-                        <div className="aulablocos">
-                                <h3>
-                                    boxe
-                                </h3>
-                                <span id="data_aula">
-                                    20/04/25
-                                </span>
-                                <span id="horario_aula">
-                                    20:00
-                                </span>
-                                <span id="dia_aula">
-                                    quarta-feira
-                                </span>
-                        </div>
-
-                        <div className="aulablocos">
-                                <h3>
-                                    boxe
-                                </h3>
-                                <span id="data_aula">
-                                    20/04/25
-                                </span>
-                                <span id="horario_aula">
-                                    20:00
-                                </span>
-                                <span id="dia_aula">
-                                    quarta-feira
-                                </span>
-                        </div>
-
-                        <div className="aulablocos">
-                                <h3>
-                                    boxe
-                                </h3>
-                                <span id="data_aula">
-                                    20/04/25
-                                </span>
-                                <span id="horario_aula">
-                                    20:00
-                                </span>
-                                <span id="dia_aula">
-                                    quarta-feira
-                                </span>
-                        </div>
-                      </section>
-                      <section className="espaco">
-                     </section>
                     </article>
                 </main>
                 <Footer />
