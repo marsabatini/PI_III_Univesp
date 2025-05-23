@@ -142,7 +142,7 @@ export default function Aluno() {
                         {aulasMarcadas.length > 0 ? (
                             aulasMarcadas.map(aula => (
                                 <div key={aula.id}>
-                                    <span>{aula.dataHora + " " + aula.modalidade}</span>
+                                   <Link to="/aluno/Presenca"> <span>{aula.dataHora + " " + aula.modalidade}</span> </Link>
                                 </div>
                             ))
                         ) : (
